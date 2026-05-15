@@ -1,609 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn That No One Talks About</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LEARN — The Magazine No One Talks About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#100f0c;
+  --paper:#f5f0e8;
+  --paper2:#ede7da;
+  --paper3:#e3dcd0;
+  --accent:#b5082f;
+  --accent2:#1b3b6f;
+  --gold:#b8860b;
+  --muted:#6b6257;
+  --faint:#9e968c;
+  --serif:'Playfair Display',Georgia,serif;
+  --slab:'Libre Baskerville',Georgia,serif;
+  --mono:'DM Mono',monospace;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:0.5;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #312e81 25%, #7c3aed 50%, #ec4899 75%, #06b6d4 100%);
-      background-size: 400% 400%;
-      animation: gradientMove 16s ease infinite;
-      color: white;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+/* TICKER */
+.ticker{
+  background:var(--ink);color:var(--paper);
+  font-family:var(--mono);font-size:0.58rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.4rem 0;overflow:hidden;white-space:nowrap;
+}
+.ticker-track{display:inline-block;animation:tick 30s linear infinite;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-    .background-glow {
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(99,102,241,0.25), transparent 70%);
-      top: -150px;
-      right: -150px;
-      z-index: -1;
-      animation: pulse 8s infinite alternate;
-    }
+/* MASTHEAD */
+.masthead{padding:0 2.5rem;border-bottom:3px double var(--ink);}
+.mast-top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.55rem 0;border-bottom:0.5px solid rgba(16,15,12,0.3);
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--muted);
+}
+.mast-body{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:2rem;padding:1.2rem 0 1rem;
+}
+.mast-col{
+  font-family:var(--mono);font-size:0.6rem;
+  letter-spacing:0.08em;color:var(--muted);
+  text-transform:uppercase;line-height:2;
+}
+.mast-col.right{text-align:right;}
+.logo-block{text-align:center;}
+.logo-title{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(4rem,10vw,8rem);
+  line-height:0.88;letter-spacing:-0.04em;
+  color:var(--ink);display:block;
+}
+.logo-title span{color:var(--accent);font-style:italic;}
+.logo-sub{
+  font-family:var(--slab);font-style:italic;
+  font-size:0.75rem;color:var(--accent2);
+  letter-spacing:0.2em;text-transform:uppercase;
+  margin-top:0.4rem;display:block;
+}
+.mast-rule{
+  display:flex;align-items:center;gap:0.5rem;
+  padding:0.5rem 0 0;
+}
+.r{flex:1;height:1px;background:var(--ink);}
+.r.thick{height:3px;}
+.diamond{
+  width:7px;height:7px;background:var(--accent);
+  transform:rotate(45deg);flex-shrink:0;
+}
 
-    .background-glow2 {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(236,72,153,0.18), transparent 70%);
-      bottom: -150px;
-      left: -120px;
-      z-index: -1;
-      animation: pulse 10s infinite alternate;
-    }
+/* NAV */
+.nav{
+  display:flex;justify-content:center;
+  border-bottom:1.5px solid var(--ink);
+  overflow-x:auto;
+}
+.nav a{
+  font-family:var(--mono);font-size:0.58rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink);
+  padding:0.65rem 1.4rem;border-right:0.5px solid rgba(16,15,12,0.2);
+  transition:background 0.2s;white-space:nowrap;
+}
+.nav a:first-child{border-left:0.5px solid rgba(16,15,12,0.2);}
+.nav a:hover{background:var(--ink);color:var(--paper);}
+.nav a.active{background:var(--accent);color:var(--paper);}
 
-    @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1px 340px;
+  min-height:520px;
+  border-bottom:2px solid var(--ink);
+}
+.hero-main{padding:2.5rem 2.5rem 2.5rem;}
+.hero-divider{background:var(--ink);}
+.hero-side{display:flex;flex-direction:column;}
+.hero-kicker{
+  font-family:var(--mono);font-size:0.6rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.9rem;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.hero-kicker::before{
+  content:'';display:block;width:24px;height:1.5px;background:var(--accent);
+}
+.hero-headline{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(2.6rem,5vw,4rem);
+  line-height:1.05;letter-spacing:-0.02em;
+  margin-bottom:1.2rem;
+}
+.hero-headline em{color:var(--accent);font-style:italic;}
+.hero-dek{
+  font-family:var(--slab);font-size:1rem;
+  line-height:1.75;color:var(--muted);
+  max-width:520px;margin-bottom:1.8rem;
+}
+.hero-byline{
+  display:flex;align-items:center;gap:1rem;
+  font-family:var(--mono);font-size:0.6rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);
+}
+.hero-byline::before{content:'';flex:0 0 40px;height:1px;background:var(--faint);}
+.hero-img{
+  flex:1;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  min-height:200px;position:relative;overflow:hidden;
+}
+.hero-img-num{
+  font-family:var(--serif);font-weight:900;font-style:italic;
+  font-size:5.5rem;line-height:1;color:var(--accent);display:block;
+}
+.hero-img-label{
+  font-family:var(--mono);font-size:0.55rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--paper2);margin-top:0.4rem;display:block;text-align:center;
+}
+.hero-side-list{border-top:1.5px solid var(--ink);}
+.side-article{
+  padding:1rem 1.4rem;border-bottom:0.5px solid rgba(16,15,12,0.2);
+  text-decoration:none;color:inherit;display:block;
+  transition:background 0.2s;
+}
+.side-article:hover{background:var(--paper2);}
+.side-art-num{
+  font-family:var(--mono);font-size:0.52rem;
+  letter-spacing:0.12em;color:var(--accent);
+  text-transform:uppercase;margin-bottom:0.25rem;
+}
+.side-art-title{
+  font-family:var(--serif);font-size:0.95rem;
+  font-weight:700;line-height:1.3;
+}
 
-    @keyframes pulse {
-      from {
-        transform: scale(1);
-      }
-      to {
-        transform: scale(1.15);
-      }
-    }
+/* SECTION HEADER */
+.section-header{
+  display:flex;align-items:center;
+  border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);
+}
+.section-label{
+  font-family:var(--mono);font-size:0.62rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  padding:0.55rem 2rem;border-right:1px solid var(--ink);
+  white-space:nowrap;
+}
+.section-label.red{background:var(--accent);color:var(--paper);}
+.section-spacer{flex:1;}
+.section-meta{
+  font-family:var(--mono);font-size:0.55rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--faint);padding:0.55rem 2rem;
+  border-left:1px solid var(--ink);white-space:nowrap;
+}
 
-    .container {
-      width: 90%;
-      max-width: 1300px;
-      margin: auto;
-      padding: 40px 0;
-    }
+/* STATUS BAR */
+.status-bar{
+  display:flex;align-items:center;gap:0.8rem;
+  font-family:var(--mono);font-size:0.6rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);padding:2rem 2.5rem 0;
+}
+.dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+  animation:blink 2s infinite;
+}
+.dot.ok{background:#2d7a3a;animation:none;}
+.dot.err{background:var(--accent);animation:none;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.25;}}
 
-    .hero {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      align-items: center;
-      gap: 50px;
-      min-height: 100vh;
-    }
+/* GRID */
+.article-section{padding:2rem 2.5rem 3rem;}
+.article-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  border:1px solid var(--ink);
+}
+.article-card{
+  padding:1.8rem 1.6rem 1.8rem;
+  border-right:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+  text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;gap:0.6rem;
+  transition:background 0.2s;position:relative;overflow:hidden;
+}
+.article-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent);transform:scaleX(0);
+  transform-origin:left;transition:transform 0.3s;
+}
+.article-card:hover{background:var(--paper2);}
+.article-card:hover::before{transform:scaleX(1);}
+.card-index{
+  font-family:var(--mono);font-size:0.55rem;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);
+}
+.card-title{
+  font-family:var(--serif);font-weight:700;
+  font-size:1.2rem;line-height:1.25;
+}
+.card-foot{
+  font-family:var(--mono);font-size:0.56rem;
+  color:var(--faint);letter-spacing:0.06em;
+  margin-top:auto;padding-top:0.75rem;
+  border-top:0.5px solid rgba(16,15,12,0.15);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.card-arrow{font-size:0.9rem;color:var(--accent);transition:transform 0.2s;}
+.article-card:hover .card-arrow{transform:translateX(4px);}
 
-    .hero-text {
-      animation: fadeIn 1.2s ease;
-    }
+/* SKELETON */
+.skel-card{
+  padding:1.8rem 1.6rem;
+  border-right:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+}
+.skel{
+  background:linear-gradient(90deg,var(--paper2) 25%,var(--paper3) 50%,var(--paper2) 75%);
+  background-size:200% 100%;
+  animation:shimmer 1.5s infinite;
+  border-radius:2px;margin-bottom:0.6rem;
+}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 
-    .tag {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
-      font-size: 14px;
-      letter-spacing: 1px;
-      margin-bottom: 25px;
-      color: #cbd5e1;
-    }
+/* EMPTY / ERROR */
+.msg-cell{
+  grid-column:1/-1;
+  padding:4rem 2rem;text-align:center;
+  border-right:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+}
+.msg-icon{
+  font-family:var(--serif);font-style:italic;
+  font-size:3rem;color:var(--paper3);margin-bottom:1rem;
+}
+.msg-title{font-family:var(--serif);font-size:1.4rem;font-weight:700;margin-bottom:0.5rem;}
+.msg-text{font-family:var(--mono);font-size:0.6rem;color:var(--muted);letter-spacing:0.06em;line-height:2;}
 
-    h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 1.05;
-      font-weight: 800;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, #ffffff, #93c5fd, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* FOOTER */
+footer{
+  border-top:3px double var(--ink);
+  padding:1.5rem 2.5rem;
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.foot-logo{font-family:var(--serif);font-weight:900;font-size:1.3rem;letter-spacing:-0.02em;}
+.foot-logo span{color:var(--accent);font-style:italic;}
+.foot-meta{
+  font-family:var(--mono);font-size:0.56rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--muted);text-align:right;line-height:2.2;
+}
+.foot-meta a{color:var(--accent2);text-decoration:none;}
+.foot-meta a:hover{text-decoration:underline;}
 
-    .highlight {
-      color: #a855f7;
-      -webkit-text-fill-color: #a855f7;
-    }
-
-    .description {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #cbd5e1;
-      max-width: 650px;
-      margin-bottom: 35px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 28px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.35s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: white;
-      box-shadow: 0 10px 30px rgba(99,102,241,0.35);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 35px rgba(99,102,241,0.45);
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.05);
-      color: white;
-      backdrop-filter: blur(12px);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-4px);
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(20px);
-      border-radius: 30px;
-      padding: 35px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      background: rgba(168,85,247,0.3);
-      border-radius: 50%;
-      top: -60px;
-      right: -40px;
-      filter: blur(50px);
-    }
-
-    .magazine-cover {
-      border-radius: 24px;
-      overflow: hidden;
-      position: relative;
-      min-height: 500px;
-      background: linear-gradient(160deg, #1e1b4b, #111827, #0f172a);
-      border: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 30px;
-    }
-
-    .cover-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .issue {
-      background: rgba(255,255,255,0.08);
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      color: #e2e8f0;
-    }
-
-    .cover-title {
-      font-size: 3rem;
-      font-weight: 800;
-      line-height: 1.1;
-      margin: 40px 0;
-    }
-
-    .cover-title span {
-      color: #c084fc;
-    }
-
-    .topics {
-      display: grid;
-      gap: 14px;
-    }
-
-    .topic {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 14px 18px;
-      border-radius: 16px;
-      color: #e2e8f0;
-      transition: 0.3s ease;
-    }
-
-    .topic:hover {
-      transform: translateX(8px);
-      background: rgba(255,255,255,0.09);
-    }
-
-    .features {
-      padding: 80px 0 40px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: auto auto 50px;
-      line-height: 1.8;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-
-    .feature-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 30px;
-      border-radius: 24px;
-      transition: 0.4s ease;
-      backdrop-filter: blur(16px);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 35px rgba(0,0,0,0.35);
-    }
-
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 18px;
-    }
-
-    .feature-card h3 {
-      margin-bottom: 12px;
-      font-size: 1.3rem;
-    }
-
-    .feature-card p {
-      color: #cbd5e1;
-      line-height: 1.7;
-    }
-
-    #articles {
-      padding: 80px 0 30px;
-    }
-
-    .article-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-      margin-top: 50px;
-    }
-
-    .article-card {
-      text-decoration: none;
-      color: white;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 28px;
-      transition: 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(16px);
-      display: block;
-    }
-
-    .article-card::before {
-      content: '';
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background: rgba(139,92,246,0.18);
-      border-radius: 50%;
-      top: -40px;
-      right: -40px;
-      filter: blur(30px);
-    }
-
-    .article-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      border-color: rgba(168,85,247,0.35);
-    }
-
-    .article-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #8b5cf6, #6366f1);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: 1px;
-      margin-bottom: 18px;
-      font-weight: 600;
-    }
-
-    .article-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 14px;
-      line-height: 1.4;
-    }
-
-    .article-card p {
-      color: #cbd5e1;
-      line-height: 1.7;
-      margin-bottom: 22px;
-    }
-
-    .read-more {
-      color: #c084fc;
-      font-weight: 600;
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .empty-state p {
-      margin-top: 10px;
-      color: #cbd5e1;
-    }
-
-    footer {
-      text-align: center;
-      padding: 50px 20px 30px;
-      color: #94a3b8;
-      font-size: 15px;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding-top: 50px;
-      }
-
-      .cover-title {
-        font-size: 2.2rem;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        justify-content: center;
-      }
-    }
-  </style>
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;}
+  .hero-divider{display:none;}
+  .hero-side{border-top:2px solid var(--ink);}
+  .mast-body{grid-template-columns:1fr;gap:0;}
+  .mast-col{display:none;}
+}
+@media(max-width:540px){
+  .masthead,.article-section,.status-bar,footer{padding-left:1rem;padding-right:1rem;}
+  .hero-main{padding:1.5rem 1rem;}
+  .article-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-  <div class="background-glow"></div>
-  <div class="background-glow2"></div>
 
-  <div class="container">
-    <section class="hero">
-      <div class="hero-text">
-        <div class="tag">COLORFUL DIGITAL MAGAZINE • HIDDEN KNOWLEDGE • FUTURE IDEAS</div>
-
-        <h1>
-          Learn That <br>
-          <span class="highlight">No One Talks About</span>
-        </h1>
-
-        <p class="description">
-          A modern digital magazine exploring hidden knowledge, untold truths, overlooked ideas, deep learning concepts, real-world skills, psychology, technology, human behavior, and unconventional wisdom that rarely appears in traditional education.
-        </p>
-
-        <div class="buttons">
-          <a href="#features" class="btn btn-primary">Explore Magazine</a>
-          <a href="#" class="btn btn-secondary">Latest Edition</a>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <div class="magazine-cover">
-          <div class="cover-top">
-            <div class="issue">Issue #01</div>
-            <div class="issue">2026 Edition</div>
-          </div>
-
-          <div>
-            <div class="cover-title">
-              LEARN <span>THAT</span><br>
-              NO ONE<br>
-              TALKS ABOUT
-            </div>
-
-            <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
-              <span style="padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08);">AI</span>
-              <span style="padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08);">Psychology</span>
-              <span style="padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08);">Future Skills</span>
-            </div>
-          </div>
-
-          <div class="topics">
-            <div class="topic">• Hidden Psychology Behind Success</div>
-            <div class="topic">• AI Skills That Schools Ignore</div>
-            <div class="topic">• The Science of Focus & Discipline</div>
-            <div class="topic">• Future Careers & Digital Thinking</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="features" id="features">
-      <h2 class="section-title">What Makes This Magazine Different?</h2>
-      <p class="section-subtitle">
-        Designed for curious minds who want to learn beyond textbooks, trends, and mainstream conversations.
-      </p>
-
-      <div class="grid">
-        <div class="feature-card">
-          <div class="feature-icon">🧠</div>
-          <h3>Deep Knowledge</h3>
-          <p>
-            Understand concepts, systems, and real-life skills that are usually hidden behind complex discussions.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3>Future Skills</h3>
-          <p>
-            Learn AI, digital productivity, strategic thinking, and modern career insights before they become mainstream.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">📚</div>
-          <h3>Smart Learning</h3>
-          <p>
-            Practical learning methods, memory techniques, communication mastery, and mindset frameworks.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🌌</div>
-          <h3>Untold Stories</h3>
-          <p>
-            Discover perspectives, hidden patterns, and unconventional truths that challenge ordinary thinking.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="articles">
-      <h2 class="section-title">Featured Magazine Articles</h2>
-      <p class="section-subtitle">
-        Beautifully indexed articles automatically discovered from your repository or current folder. Each article title is extracted directly from its HTML title tag.
-      </p>
-
-      <div class="article-grid" id="articleGrid">
-        <div class="empty-state">
-          <h3>Loading Articles...</h3>
-          <p>Scanning repository for HTML magazine files.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      © 2026 • Learn That No One Talks About • Designed with modern editorial aesthetics.
-    </footer>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    ✦ LEARN THAT NO ONE TALKS ABOUT &nbsp;&nbsp;·&nbsp;&nbsp; ADULT EDUCATION &nbsp;&nbsp;·&nbsp;&nbsp; AUTO-UPDATED FROM GITHUB &nbsp;&nbsp;·&nbsp;&nbsp; HIDDEN KNOWLEDGE &nbsp;&nbsp;·&nbsp;&nbsp; NEW ARTICLES APPEAR AUTOMATICALLY &nbsp;&nbsp;·&nbsp;&nbsp; DRNITINMISHRA10/SE &nbsp;&nbsp;·&nbsp;&nbsp; READ · LEARN · GROW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦ LEARN THAT NO ONE TALKS ABOUT &nbsp;&nbsp;·&nbsp;&nbsp; ADULT EDUCATION &nbsp;&nbsp;·&nbsp;&nbsp; AUTO-UPDATED FROM GITHUB &nbsp;&nbsp;·&nbsp;&nbsp; HIDDEN KNOWLEDGE &nbsp;&nbsp;·&nbsp;&nbsp; NEW ARTICLES APPEAR AUTOMATICALLY &nbsp;&nbsp;·&nbsp;&nbsp; DRNITINMISHRA10/SE &nbsp;&nbsp;·&nbsp;&nbsp; READ · LEARN · GROW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </div>
-  <script>
-    async function loadMagazineArticles() {
-      const articleContainer = document.getElementById('articleGrid');
+</div>
 
-      try {
-        const response = await fetch('./');
-        const text = await response.text();
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="mast-top">
+    <span>Vol. I &nbsp;·&nbsp; Est. 2026</span>
+    <span id="dateTop">—</span>
+    <span>drnitinmishra10 / se</span>
+  </div>
+  <div class="mast-body">
+    <div class="mast-col">
+      Hidden Knowledge<br>
+      Untold Truths<br>
+      Adult Education<br>
+      Open Source
+    </div>
+    <div class="logo-block">
+      <span class="logo-title">LE<span>AR</span>N</span>
+      <span class="logo-sub">That No One Talks About</span>
+      <div class="mast-rule">
+        <div class="r thick"></div>
+        <div class="diamond"></div>
+        <div class="r"></div>
+        <div class="diamond"></div>
+        <div class="r thick"></div>
+      </div>
+    </div>
+    <div class="mast-col right">
+      Free to Read<br>
+      GitHub Hosted<br>
+      Auto-Updated<br>
+      100% HTML
+    </div>
+  </div>
+</header>
 
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(text, 'text/html');
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="active">Front Page</a>
+  <a href="#all-articles">All Articles</a>
+  <a href="https://github.com/drnitinmishra10/se" target="_blank">Repository ↗</a>
+  <a href="https://github.com/drnitinmishra10/se/issues/new" target="_blank">Submit Topic ↗</a>
+</nav>
 
-        const links = [...doc.querySelectorAll('a')]
-          .map(link => link.getAttribute('href'))
-          .filter(href => href && href.endsWith('.html') && href !== 'index.html');
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-main">
+    <div class="hero-kicker">Featured Edition</div>
+    <h1 class="hero-headline">
+      Learn That<br><em>No One</em><br>Talks About
+    </h1>
+    <p class="hero-dek">
+      An open-source digital magazine exploring intimate knowledge, hidden psychology, and the unspoken truths of human connection — the curriculum no classroom ever taught.
+    </p>
+    <div class="hero-byline">
+      Dr. Nitin Mishra &nbsp;·&nbsp; Adult Education &nbsp;·&nbsp; <span id="heroYear">2026</span>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+  <div class="hero-side">
+    <div class="hero-img">
+      <div style="text-align:center;">
+        <span class="hero-img-num" id="countDisplay">…</span>
+        <span class="hero-img-label">Articles in this issue</span>
+      </div>
+    </div>
+    <div class="hero-side-list" id="heroSide"></div>
+  </div>
+</section>
 
-        const uniqueLinks = [...new Set(links)];
+<!-- STATUS -->
+<div class="status-bar">
+  <div class="dot" id="dot"></div>
+  <span id="statusMsg">Fetching articles from GitHub…</span>
+</div>
 
-        if (uniqueLinks.length === 0) {
-          articleContainer.innerHTML = `
-            <div class="empty-state">
-              <h3>No HTML Articles Found</h3>
-              <p>Add HTML article files to this folder or GitHub repository.</p>
-            </div>
-          `;
-          return;
-        }
+<!-- SECTION HEADER -->
+<div class="section-header" id="all-articles">
+  <span class="section-label red">All Articles</span>
+  <div class="section-spacer"></div>
+  <span class="section-meta" id="countMeta">Loading…</span>
+</div>
 
-        for (const file of uniqueLinks) {
-          try {
-            const page = await fetch(file);
-            const html = await page.text();
+<!-- GRID -->
+<div class="article-section">
+  <div class="article-grid" id="grid">
+    <div class="skel-card"><div class="skel" style="height:9px;width:40%;"></div><div class="skel" style="height:19px;width:85%;margin-top:0.8rem;"></div><div class="skel" style="height:19px;width:60%;"></div><div class="skel" style="height:9px;width:50%;margin-top:1.5rem;"></div></div>
+    <div class="skel-card"><div class="skel" style="height:9px;width:35%;"></div><div class="skel" style="height:19px;width:90%;margin-top:0.8rem;"></div><div class="skel" style="height:19px;width:70%;"></div><div class="skel" style="height:9px;width:45%;margin-top:1.5rem;"></div></div>
+    <div class="skel-card"><div class="skel" style="height:9px;width:45%;"></div><div class="skel" style="height:19px;width:75%;margin-top:0.8rem;"></div><div class="skel" style="height:19px;width:80%;"></div><div class="skel" style="height:9px;width:40%;margin-top:1.5rem;"></div></div>
+  </div>
+</div>
 
-            const pageDoc = parser.parseFromString(html, 'text/html');
-            const title = pageDoc.querySelector('title')?.innerText || file.replace('.html', '');
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">LE<span>AR</span>N</div>
+  <div class="foot-meta">
+    Auto-fetched from <a href="https://github.com/drnitinmishra10/se" target="_blank">github.com/drnitinmishra10/se</a><br>
+    New articles appear here automatically when uploaded to the repo<br>
+    © 2026 · Adult Education Series · All issues free to read
+  </div>
+</footer>
 
-            const articleCard = document.createElement('a');
-            articleCard.href = file;
-            articleCard.className = 'article-card';
+<script>
+/* ─── CONFIG ──────────────────────────────────────── */
+const USER   = 'drnitinmishra10';
+const REPO   = 'se';
+const BRANCH = 'main';
+const EXCLUDE = ['index.html'];   // files that are NOT articles
+const PAGES_BASE = `https://${USER}.github.io/${REPO}/`;
+const RAW_BASE   = `https://raw.githubusercontent.com/${USER}/${REPO}/${BRANCH}/`;
+const TREE_API   = `https://api.github.com/repos/${USER}/${REPO}/git/trees/${BRANCH}?recursive=1`;
 
-            articleCard.innerHTML = `
-              <div class="article-badge">ARTICLE</div>
-              <h3>${title}</h3>
-              <p>Explore this featured article from the digital magazine collection.</p>
-              <span class="read-more">Read Article →</span>
-            `;
+/* ─── DATES ───────────────────────────────────────── */
+const now = new Date();
+document.getElementById('dateTop').textContent =
+  now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+document.getElementById('heroYear').textContent = now.getFullYear();
 
-            articleContainer.appendChild(articleCard);
-          } catch (err) {
-            console.error('Error loading file:', file, err);
-          }
-        }
-      } catch (error) {
-        articleContainer.innerHTML = `
-          <div class="empty-state">
-            <h3>Directory Listing Not Supported</h3>
-            <p>GitHub Pages may disable folder listing. Create a manifest.json if needed.</p>
-          </div>
-        `;
-      }
+/* ─── HELPERS ─────────────────────────────────────── */
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function setStatus(msg, state){
+  document.getElementById('statusMsg').textContent = msg;
+  const d = document.getElementById('dot');
+  d.className = 'dot' + (state==='ok'?' ok':state==='err'?' err':'');
+}
+
+/* Fetch raw HTML, extract <title> */
+async function getTitle(path){
+  try {
+    const r = await fetch(RAW_BASE + path);
+    if(!r.ok) throw 0;
+    const txt = await r.text();
+    const m = txt.match(/<title[^>]*>([^<]+)<\/title>/i);
+    return m ? m[1].trim() : path.replace('.html','').replace(/[-_]/g,' ');
+  } catch {
+    return path.replace('.html','').replace(/[-_]/g,' ');
+  }
+}
+
+/* Build article card */
+function makeCard(n, path, title){
+  const url  = PAGES_BASE + path;
+  const card = document.createElement('a');
+  card.className = 'article-card';
+  card.href = url; card.target = '_blank'; card.rel = 'noopener noreferrer';
+  card.innerHTML = `
+    <div class="card-index">No. ${String(n).padStart(2,'0')} &nbsp;·&nbsp; Article</div>
+    <div class="card-title">${esc(title)}</div>
+    <div class="card-foot">
+      <span>${esc(path)}</span>
+      <span class="card-arrow">→</span>
+    </div>`;
+  return card;
+}
+
+/* Build sidebar item */
+function makeSide(n, path, title){
+  const url = PAGES_BASE + path;
+  const el  = document.createElement('a');
+  el.className = 'side-article';
+  el.href = url; el.target = '_blank'; el.rel = 'noopener noreferrer';
+  el.innerHTML = `
+    <div class="side-art-num">Article ${String(n).padStart(2,'0')}</div>
+    <div class="side-art-title">${esc(title)}</div>`;
+  return el;
+}
+
+/* ─── MAIN LOADER ─────────────────────────────────── */
+async function load(){
+  const grid = document.getElementById('grid');
+  const side = document.getElementById('heroSide');
+
+  try {
+    setStatus('Connecting to GitHub API…');
+
+    const res  = await fetch(TREE_API);
+    if(!res.ok) throw new Error(`GitHub API responded with ${res.status}`);
+    const data = await res.json();
+
+    /* Filter to .html files not on the exclude list */
+    const files = (data.tree||[])
+      .filter(f => f.type==='blob' && f.path.endsWith('.html') && !EXCLUDE.includes(f.path))
+      .map(f => f.path)
+      .sort();   // alphabetical order
+
+    if(!files.length){
+      grid.innerHTML = `<div class="msg-cell">
+        <div class="msg-icon">∅</div>
+        <div class="msg-title">No articles yet</div>
+        <div class="msg-text">
+          Upload <code>.html</code> files to
+          <strong>github.com/${USER}/${REPO}</strong>
+          and they will appear here automatically.
+        </div></div>`;
+      document.getElementById('countDisplay').textContent = '0';
+      document.getElementById('countMeta').textContent    = '0 articles';
+      setStatus('No HTML articles found in repository', 'ok');
+      return;
     }
 
-    loadMagazineArticles();
-  </script>
+    setStatus(`Found ${files.length} article${files.length>1?'s':''} — fetching titles…`);
+    document.getElementById('countDisplay').textContent = files.length;
+    document.getElementById('countMeta').textContent =
+      `${files.length} article${files.length!==1?'s':''} · auto-updated`;
+
+    /* Fetch all titles in parallel */
+    const titles = await Promise.all(files.map(getTitle));
+
+    /* Render */
+    grid.innerHTML = '';
+    side.innerHTML = '';
+    files.forEach((path, i) => {
+      grid.appendChild(makeCard(i+1, path, titles[i]));
+      if(i < 4) side.appendChild(makeSide(i+1, path, titles[i]));
+    });
+
+    setStatus(
+      `${files.length} article${files.length>1?'s':''} loaded · refreshes every 5 min · last checked ${new Date().toLocaleTimeString()}`,
+      'ok'
+    );
+
+  } catch(err){
+    console.error(err);
+    grid.innerHTML = `<div class="msg-cell">
+      <div class="msg-icon">!</div>
+      <div class="msg-title">Could not reach GitHub</div>
+      <div class="msg-text">${esc(err.message)}<br>Check your connection and try refreshing.</div>
+    </div>`;
+    setStatus(`Error: ${err.message}`, 'err');
+  }
+}
+
+/* ─── RUN & AUTO-REFRESH ──────────────────────────── */
+load();
+/*
+  Auto-refresh every 5 minutes.
+  When you upload a new .html file to the repo, it will appear
+  here on the next refresh — no manual update needed.
+*/
+setInterval(load, 5 * 60 * 1000);
+</script>
 </body>
 </html>
