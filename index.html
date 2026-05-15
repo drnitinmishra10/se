@@ -1,788 +1,609 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Papers Repository</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn That No One Talks About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
-            --bg-dark: #0f172a;
-            --bg-card: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --success: #10b981;
-            --error: #ef4444;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #312e81 25%, #7c3aed 50%, #ec4899 75%, #06b6d4 100%);
+      background-size: 400% 400%;
+      animation: gradientMove 16s ease infinite;
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e1b4b 50%, #312e81 100%);
-            background-attachment: fixed;
-            color: var(--text);
-            min-height: 100vh;
-            padding: 20px;
-            line-height: 1.6;
-        }
+    .background-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.25), transparent 70%);
+      top: -150px;
+      right: -150px;
+      z-index: -1;
+      animation: pulse 8s infinite alternate;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .background-glow2 {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(236,72,153,0.18), transparent 70%);
+      bottom: -150px;
+      left: -120px;
+      z-index: -1;
+      animation: pulse 10s infinite alternate;
+    }
 
-        /* Header */
-        header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            position: relative;
-        }
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            opacity: 0.15;
-            pointer-events: none;
-            border-radius: 50%;
-        }
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.15);
+      }
+    }
 
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: auto;
+      padding: 40px 0;
+    }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      align-items: center;
+      gap: 50px;
+      min-height: 100vh;
+    }
 
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
+    .hero-text {
+      animation: fadeIn 1.2s ease;
+    }
 
-        .stat {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 12px 24px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
+    .tag {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+      color: #cbd5e1;
+    }
 
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1.05;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ffffff, #93c5fd, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+    .highlight {
+      color: #a855f7;
+      -webkit-text-fill-color: #a855f7;
+    }
 
-        /* Search & Filter */
-        .controls {
-            max-width: 600px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
 
-        .search-box {
-            width: 100%;
-            padding: 16px 24px 16px 50px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            backdrop-filter: blur(10px);
-            color: var(--text);
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
+    .buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
-        .search-box:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
+    .btn {
+      padding: 14px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.35s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .search-box::placeholder {
-            color: var(--text-muted);
-        }
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      box-shadow: 0 10px 30px rgba(99,102,241,0.35);
+    }
 
-        .search-icon {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            pointer-events: none;
-        }
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px rgba(99,102,241,0.45);
+    }
 
-        /* Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      backdrop-filter: blur(12px);
+    }
 
-        /* Card */
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 28px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+    }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 35px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+      animation: float 5s ease-in-out infinite;
+    }
 
-        .card:hover {
-            transform: translateY(-6px) scale(1.02);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: rgba(168,85,247,0.3);
+      border-radius: 50%;
+      top: -60px;
+      right: -40px;
+      filter: blur(50px);
+    }
 
-        .card:hover::before {
-            opacity: 1;
-        }
+    .magazine-cover {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      min-height: 500px;
+      background: linear-gradient(160deg, #1e1b4b, #111827, #0f172a);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px;
+    }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .card h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #fff;
-            word-break: break-word;
-        }
+    .issue {
+      background: rgba(255,255,255,0.08);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: #e2e8f0;
+    }
 
-        .card-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 16px;
-        }
+    .cover-title {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 40px 0;
+    }
 
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
+    .cover-title span {
+      color: #c084fc;
+    }
 
-        .card-footer {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
+    .topics {
+      display: grid;
+      gap: 14px;
+    }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            flex: 1;
-            justify-content: center;
-        }
+    .topic {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 18px;
+      border-radius: 16px;
+      color: #e2e8f0;
+      transition: 0.3s ease;
+    }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
-            filter: brightness(1.1);
-        }
+    .topic:hover {
+      transform: translateX(8px);
+      background: rgba(255,255,255,0.09);
+    }
 
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            flex: 0 0 auto;
-            padding: 12px;
-        }
+    .features {
+      padding: 80px 0 40px;
+    }
 
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            box-shadow: none;
-        }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
 
-        /* Loading State */
-        .loading {
-            text-align: center;
-            padding: 60px 20px;
-            grid-column: 1 / -1;
-        }
+    .section-subtitle {
+      text-align: center;
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: auto auto 50px;
+      line-height: 1.8;
+    }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 30px;
+      border-radius: 24px;
+      transition: 0.4s ease;
+      backdrop-filter: blur(16px);
+    }
 
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 80px 20px;
-            grid-column: 1 / -1;
-        }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.35);
+    }
 
-        .empty-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
 
-        .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--text-muted);
-        }
+    .feature-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
 
-        .empty-state p {
-            color: var(--text-muted);
-            max-width: 400px;
-            margin: 0 auto;
-        }
+    .feature-card p {
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
 
-        /* Error State */
-        .error-state {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            grid-column: 1 / -1;
-        }
+    #articles {
+      padding: 80px 0 30px;
+    }
 
-        .error-state h3 {
-            color: var(--error);
-            margin-bottom: 10px;
-        }
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 50px;
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-        }
+    .article-card {
+      text-decoration: none;
+      color: white;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 28px;
+      transition: 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+      display: block;
+    }
 
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
+    .article-card::before {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(139,92,246,0.18);
+      border-radius: 50%;
+      top: -40px;
+      right: -40px;
+      filter: blur(30px);
+    }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
+    .article-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border-color: rgba(168,85,247,0.35);
+    }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .article-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
 
-        .card {
-            animation: fadeIn 0.5s ease forwards;
-        }
+    .article-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
 
-        /* Mobile Optimization */
-        @media (max-width: 640px) {
-            body {
-                padding: 10px;
-            }
+    .article-card p {
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
 
-            header {
-                padding: 40px 10px 30px;
-            }
+    .read-more {
+      color: #c084fc;
+      font-weight: 600;
+    }
 
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
 
-            .card {
-                padding: 20px;
-            }
+    .empty-state p {
+      margin-top: 10px;
+      color: #cbd5e1;
+    }
 
-            .stats {
-                gap: 15px;
-            }
+    footer {
+      text-align: center;
+      padding: 50px 20px 30px;
+      color: #94a3b8;
+      font-size: 15px;
+    }
 
-            .stat {
-                padding: 10px 16px;
-            }
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 50px;
+      }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
+      .cover-title {
+        font-size: 2.2rem;
+      }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-    </style>
-<base target="_blank">
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="background-glow"></div>
+  <div class="background-glow2"></div>
 
-<div class="container">
+  <div class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <div class="tag">COLORFUL DIGITAL MAGAZINE • HIDDEN KNOWLEDGE • FUTURE IDEAS</div>
 
-    <header>
-        <h1>Research Papers Repository</h1>
-        <p class="subtitle">
-            Academic publications and conference papers by Dr. Nitin Mishra
+        <h1>
+          Learn That <br>
+          <span class="highlight">No One Talks About</span>
+        </h1>
+
+        <p class="description">
+          A modern digital magazine exploring hidden knowledge, untold truths, overlooked ideas, deep learning concepts, real-world skills, psychology, technology, human behavior, and unconventional wisdom that rarely appears in traditional education.
         </p>
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-value" id="paperCount">0</div>
-                <div class="stat-label">Papers</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value" id="fileCount">0</div>
-                <div class="stat-label">HTML Files</div>
-            </div>
-        </div>
-    </header>
 
-    <div class="controls">
-        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.35-4.35"></path>
-        </svg>
-        <input type="text" class="search-box" id="searchInput" placeholder="Search papers by name..." autocomplete="off">
-    </div>
-
-    <div class="grid" id="papersGrid">
-        <div class="loading">
-            <div class="spinner"></div>
-            <p>Discovering research papers...</p>
+        <div class="buttons">
+          <a href="#features" class="btn btn-primary">Explore Magazine</a>
+          <a href="#" class="btn btn-secondary">Latest Edition</a>
         </div>
-    </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="magazine-cover">
+          <div class="cover-top">
+            <div class="issue">Issue #01</div>
+            <div class="issue">2026 Edition</div>
+          </div>
+
+          <div>
+            <div class="cover-title">
+              LEARN <span>THAT</span><br>
+              NO ONE<br>
+              TALKS ABOUT
+            </div>
+
+            <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+              <span style="padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08);">AI</span>
+              <span style="padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08);">Psychology</span>
+              <span style="padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08);">Future Skills</span>
+            </div>
+          </div>
+
+          <div class="topics">
+            <div class="topic">• Hidden Psychology Behind Success</div>
+            <div class="topic">• AI Skills That Schools Ignore</div>
+            <div class="topic">• The Science of Focus & Discipline</div>
+            <div class="topic">• Future Careers & Digital Thinking</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <h2 class="section-title">What Makes This Magazine Different?</h2>
+      <p class="section-subtitle">
+        Designed for curious minds who want to learn beyond textbooks, trends, and mainstream conversations.
+      </p>
+
+      <div class="grid">
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>Deep Knowledge</h3>
+          <p>
+            Understand concepts, systems, and real-life skills that are usually hidden behind complex discussions.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>Future Skills</h3>
+          <p>
+            Learn AI, digital productivity, strategic thinking, and modern career insights before they become mainstream.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Smart Learning</h3>
+          <p>
+            Practical learning methods, memory techniques, communication mastery, and mindset frameworks.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌌</div>
+          <h3>Untold Stories</h3>
+          <p>
+            Discover perspectives, hidden patterns, and unconventional truths that challenge ordinary thinking.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="articles">
+      <h2 class="section-title">Featured Magazine Articles</h2>
+      <p class="section-subtitle">
+        Beautifully indexed articles automatically discovered from your repository or current folder. Each article title is extracted directly from its HTML title tag.
+      </p>
+
+      <div class="article-grid" id="articleGrid">
+        <div class="empty-state">
+          <h3>Loading Articles...</h3>
+          <p>Scanning repository for HTML magazine files.</p>
+        </div>
+      </div>
+    </section>
 
     <footer>
-        <p>&copy; 2026 Dr. Nitin Mishra | Research Repository</p>
-        <p style="margin-top: 8px; font-size: 0.9rem;">
-            Automatically indexes all HTML files in the repository
-        </p>
+      © 2026 • Learn That No One Talks About • Designed with modern editorial aesthetics.
     </footer>
+  </div>
+  <script>
+    async function loadMagazineArticles() {
+      const articleContainer = document.getElementById('articleGrid');
 
-</div>
+      try {
+        const response = await fetch('./');
+        const text = await response.text();
 
-<script>
-    const papersGrid = document.getElementById('papersGrid');
-    const searchInput = document.getElementById('searchInput');
-    const paperCountEl = document.getElementById('paperCount');
-    const fileCountEl = document.getElementById('fileCount');
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
 
-    let allPapers = [];
+        const links = [...doc.querySelectorAll('a')]
+          .map(link => link.getAttribute('href'))
+          .filter(href => href && href.endsWith('.html') && href !== 'index.html');
 
-    // Extract title from HTML content
-    async function getPageTitle(url) {
-        try {
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 5000);
+        const uniqueLinks = [...new Set(links)];
 
-            const response = await fetch(url, { signal: controller.signal });
-            clearTimeout(timeout);
-
-            if (!response.ok) return null;
-
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-
-            const title = doc.querySelector('title');
-            return title ? title.textContent.trim() : null;
-        } catch (error) {
-            return null;
-        }
-    }
-
-    // Strategy 1: Try to fetch directory listing (works on some servers)
-    async function fetchDirectoryListing() {
-        try {
-            const response = await fetch('./');
-            if (!response.ok) return [];
-
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-
-            const links = doc.querySelectorAll('a[href]');
-            const htmlFiles = [];
-
-            links.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href && href.endsWith('.html') && href !== 'index.html' && !href.startsWith('http')) {
-                    htmlFiles.push({
-                        name: href.replace('.html', '').replace(/-/g, ' ').replace(/_/g, ' '),
-                        file: href,
-                        title: null
-                    });
-                }
-            });
-
-            return htmlFiles;
-        } catch (e) {
-            return [];
-        }
-    }
-
-    // Strategy 2: Probe for common HTML files
-    async function probeForFiles() {
-        const commonNames = [
-            'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10',
-            'c11', 'c12', 'c13', 'c14', 'c15', 'c16', 'c17', 'c18', 'c19', 'c20',
-            'paper1', 'paper2', 'paper3', 'paper4', 'paper5',
-            'research1', 'research2', 'research3',
-            'publication1', 'publication2', 'publication3',
-            'index', 'about', 'contact', 'cv', 'resume',
-            'project1', 'project2', 'project3',
-            'thesis', 'dissertation', 'monograph'
-        ];
-
-        const extensions = ['.html', '.htm'];
-        const found = [];
-
-        const batchSize = 5;
-        for (let i = 0; i < commonNames.length; i += batchSize) {
-            const batch = commonNames.slice(i, i + batchSize);
-            const checks = batch.flatMap(name => 
-                extensions.map(ext => checkFileExists(`${name}${ext}`))
-            );
-
-            const results = await Promise.all(checks);
-
-            results.forEach((result, idx) => {
-                if (result.exists) {
-                    const fileName = batch[Math.floor(idx / extensions.length)] + extensions[idx % extensions.length];
-                    found.push({
-                        name: fileName.replace(/\.html?/, '').replace(/-/g, ' ').replace(/_/g, ' '),
-                        file: fileName,
-                        title: null
-                    });
-                }
-            });
+        if (uniqueLinks.length === 0) {
+          articleContainer.innerHTML = `
+            <div class="empty-state">
+              <h3>No HTML Articles Found</h3>
+              <p>Add HTML article files to this folder or GitHub repository.</p>
+            </div>
+          `;
+          return;
         }
 
-        return found;
-    }
+        for (const file of uniqueLinks) {
+          try {
+            const page = await fetch(file);
+            const html = await page.text();
 
-    async function checkFileExists(url) {
-        try {
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 3000);
+            const pageDoc = parser.parseFromString(html, 'text/html');
+            const title = pageDoc.querySelector('title')?.innerText || file.replace('.html', '');
 
-            const response = await fetch(url, { 
-                method: 'HEAD',
-                signal: controller.signal
-            });
+            const articleCard = document.createElement('a');
+            articleCard.href = file;
+            articleCard.className = 'article-card';
 
-            clearTimeout(timeout);
-            return { exists: response.ok, url };
-        } catch (error) {
-            return { exists: false, url };
-        }
-    }
-
-    // Strategy 3: If GitHub Pages, try API
-    async function fetchGitHubFiles() {
-        const hostname = window.location.hostname;
-        if (!hostname.includes('github.io')) return [];
-
-        const username = hostname.split('.')[0];
-        const repoName = window.location.pathname.split('/')[1] || `${username}.github.io`;
-
-        try {
-            const apiUrl = `https://api.github.com/repos/${username}/${repoName}/contents/`;
-            const response = await fetch(apiUrl);
-            if (!response.ok) return [];
-
-            const data = await response.json();
-            return data
-                .filter(item => item.name.endsWith('.html') && item.name !== 'index.html')
-                .map(item => ({
-                    name: item.name.replace('.html', '').replace(/-/g, ' ').replace(/_/g, ' '),
-                    file: item.name,
-                    title: null
-                }));
-        } catch (e) {
-            return [];
-        }
-    }
-
-    function formatTitle(name) {
-        return name
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    }
-
-    function getPaperIcon(name) {
-        const icons = ['📄', '📑', '📊', '🔬', '🧪', '📖', '🎓', '🔍', '💡', '📝'];
-        let hash = 0;
-        for (let i = 0; i < name.length; i++) {
-            hash = name.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        return icons[Math.abs(hash) % icons.length];
-    }
-
-    async function renderPapers(papers) {
-        papersGrid.innerHTML = '';
-
-        if (papers.length === 0) {
-            papersGrid.innerHTML = `
-                <div class="empty-state">
-                    <div class="empty-icon">📂</div>
-                    <h3>No HTML files found</h3>
-                    <p>No research papers were discovered in this repository. Add HTML files to see them listed here automatically.</p>
-                </div>
-            `;
-            paperCountEl.textContent = '0';
-            fileCountEl.textContent = '0';
-            return;
-        }
-
-        // Fetch titles for all papers in parallel
-        const titlePromises = papers.map(async (paper) => {
-            const title = await getPageTitle(paper.file);
-            paper.title = title || formatTitle(paper.name);
-            return paper;
-        });
-
-        allPapers = await Promise.all(titlePromises);
-
-        paperCountEl.textContent = allPapers.length;
-        fileCountEl.textContent = allPapers.length;
-
-        allPapers.forEach((paper, index) => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.style.animationDelay = `${index * 0.05}s`;
-
-            const displayTitle = paper.title || formatTitle(paper.name);
-            const icon = getPaperIcon(paper.name);
-
-            card.innerHTML = `
-                <div class="card-icon">${icon}</div>
-                <h2>${displayTitle}</h2>
-                <div class="card-meta">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                    </svg>
-                    <span>${paper.file}</span>
-                </div>
-                <p>${displayTitle}</p>
-                <div class="card-footer">
-                    <a class="btn" href="${paper.file}" target="_blank" rel="noopener noreferrer">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                        Open Paper
-                    </a>
-                    <a class="btn btn-secondary" href="${paper.file}" download title="Download">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
+            articleCard.innerHTML = `
+              <div class="article-badge">ARTICLE</div>
+              <h3>${title}</h3>
+              <p>Explore this featured article from the digital magazine collection.</p>
+              <span class="read-more">Read Article →</span>
             `;
 
-            papersGrid.appendChild(card);
-        });
+            articleContainer.appendChild(articleCard);
+          } catch (err) {
+            console.error('Error loading file:', file, err);
+          }
+        }
+      } catch (error) {
+        articleContainer.innerHTML = `
+          <div class="empty-state">
+            <h3>Directory Listing Not Supported</h3>
+            <p>GitHub Pages may disable folder listing. Create a manifest.json if needed.</p>
+          </div>
+        `;
+      }
     }
 
-    function filterPapers(query) {
-        const filtered = allPapers.filter(paper => 
-            (paper.title && paper.title.toLowerCase().includes(query.toLowerCase())) ||
-            paper.name.toLowerCase().includes(query.toLowerCase()) ||
-            paper.file.toLowerCase().includes(query.toLowerCase())
-        );
-
-        papersGrid.innerHTML = '';
-
-        if (filtered.length === 0) {
-            papersGrid.innerHTML = `
-                <div class="empty-state">
-                    <div class="empty-icon">🔍</div>
-                    <h3>No matching papers</h3>
-                    <p>No papers match your search query. Try different keywords.</p>
-                </div>
-            `;
-            return;
-        }
-
-        filtered.forEach((paper, index) => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.style.animationDelay = `${index * 0.05}s`;
-
-            const displayTitle = paper.title || formatTitle(paper.name);
-            const icon = getPaperIcon(paper.name);
-
-            card.innerHTML = `
-                <div class="card-icon">${icon}</div>
-                <h2>${displayTitle}</h2>
-                <div class="card-meta">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                    </svg>
-                    <span>${paper.file}</span>
-                </div>
-                <p>${displayTitle}</p>
-                <div class="card-footer">
-                    <a class="btn" href="${paper.file}" target="_blank" rel="noopener noreferrer">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                        Open Paper
-                    </a>
-                    <a class="btn btn-secondary" href="${paper.file}" download title="Download">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-            `;
-
-            papersGrid.appendChild(card);
-        });
-    }
-
-    async function loadPapers() {
-        let papers = await fetchDirectoryListing();
-
-        if (papers.length === 0) {
-            papers = await fetchGitHubFiles();
-        }
-
-        if (papers.length === 0) {
-            papers = await probeForFiles();
-        }
-
-        // Remove duplicates based on filename
-        const seen = new Set();
-        papers = papers.filter(paper => {
-            if (seen.has(paper.file)) return false;
-            seen.add(paper.file);
-            return true;
-        });
-
-        // Sort alphabetically by filename
-        papers.sort((a, b) => a.file.localeCompare(b.file));
-
-        await renderPapers(papers);
-    }
-
-    // Search functionality
-    searchInput.addEventListener('input', (e) => {
-        filterPapers(e.target.value);
-    });
-
-    // Initial load
-    loadPapers();
-</script>
-
+    loadMagazineArticles();
+  </script>
 </body>
 </html>
