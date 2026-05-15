@@ -1,170 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Art of Presence – Intimacy That Lingers</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Presence — Intimacy That Lingers</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
-        body {
-            background: #f7f3f0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            padding: 2rem 1rem;
-            line-height: 1.6;
-            color: #1e1e1e;
-        }
+  :root {
+    --bg: #faf7f4;
+    --text: #1e1e1e;
+    --accent: #8b6f5e;
+    --accent-light: #a88b7a;
+    --muted: #6b5e56;
+    --card-bg: #ffffff;
+    --border: #e8e0d8;
+    --warm: #f5efe6;
+  }
 
-        article {
-            max-width: 720px;
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 2.5rem 2.2rem;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-            transition: box-shadow 0.2s ease;
-        }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 0.3rem;
-            color: #1a1a1a;
-        }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
 
-        .subhead {
-            font-size: 1rem;
-            color: #6b5e56;
-            border-left: 3px solid #d6c9c0;
-            padding-left: 1rem;
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
+  /* Hero Section */
+  .hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2c241f 0%, #4a3b32 50%, #2c241f 100%);
+  }
 
-        .principle {
-            margin-bottom: 2rem;
-            padding-bottom: 1.2rem;
-            border-bottom: 1px solid #ede8e4;
-        }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.8) saturate(0.9);
+  }
 
-        .principle:last-of-type {
-            border-bottom: none;
-            margin-bottom: 0.8rem;
-        }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(44,36,31,0.3) 0%, rgba(44,36,31,0.6) 100%);
+  }
 
-        .principle strong {
-            display: block;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #2c241f;
-            margin-bottom: 0.3rem;
-        }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 20px;
+    max-width: 700px;
+  }
 
-        .principle p {
-            color: #2e2a27;
-            font-size: 1rem;
-            margin-top: 0.1rem;
-        }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.6rem;
+    font-weight: 600;
+    color: #fdfbf7;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
 
-        .principle .highlight {
-            background: #f4ede8;
-            padding: 0.1rem 0.4rem;
-            border-radius: 6px;
-            font-weight: 450;
-        }
+  .hero .subtitle {
+    font-size: 1.2rem;
+    color: rgba(253,251,247,0.85);
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto 24px;
+    line-height: 1.6;
+  }
 
-        .after-note {
-            margin-top: 2.2rem;
-            background: #f6f0eb;
-            border-radius: 20px;
-            padding: 1.5rem 1.8rem;
-            border-left: 4px solid #b7a69b;
-        }
+  .hero .meta {
+    font-size: 0.8rem;
+    color: rgba(253,251,247,0.6);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+  }
 
-        .after-note p {
-            font-size: 1rem;
-            color: #2b2521;
-            margin-bottom: 0.3rem;
-        }
+  .scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: rgba(253,251,247,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
 
-        .after-note .small-head {
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 0.2rem;
-            color: #1f1a16;
-        }
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+  }
 
-        .footer-note {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #7a6e66;
-            text-align: center;
-            border-top: 1px solid #e5ddd7;
-            padding-top: 1.5rem;
-            letter-spacing: 0.01em;
-        }
+  /* Container */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
 
-        @media (max-width: 500px) {
-            article {
-                padding: 1.8rem 1.2rem;
-            }
+  /* Intro */
+  .intro {
+    font-size: 1.25rem;
+    color: var(--muted);
+    margin-bottom: 60px;
+    text-align: center;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.8;
+    font-family: 'Playfair Display', serif;
+  }
 
-            h1 {
-                font-size: 1.7rem;
-            }
+  /* Principle Cards */
+  .principle {
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.04);
+    border: 1px solid var(--border);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+  }
 
-            .principle strong {
-                font-size: 1.05rem;
-            }
-        }
-    </style>
+  .principle:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .principle-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.85) brightness(1.02);
+    transition: filter 0.4s ease, transform 0.6s ease;
+  }
+
+  .principle:hover .principle-img {
+    filter: saturate(1) brightness(1.05);
+    transform: scale(1.03);
+  }
+
+  .principle-body {
+    padding: 36px 40px 40px;
+  }
+
+  .principle-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+
+  .number {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    font-family: 'Playfair Display', serif;
+    box-shadow: 0 4px 12px rgba(139,111,94,0.3);
+  }
+
+  .principle h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .principle p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.85;
+  }
+
+  .principle .highlight {
+    color: var(--accent);
+    font-weight: 500;
+    background: linear-gradient(120deg, rgba(139,111,94,0.1) 0%, rgba(139,111,94,0.1) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.3em;
+    background-position: 0 88%;
+    padding: 0 2px;
+  }
+
+  /* Closing */
+  .closing {
+    text-align: center;
+    margin-top: 80px;
+    padding: 50px 40px;
+    background: linear-gradient(135deg, var(--warm), #ede4da);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: rgba(139,111,94,0.08);
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    line-height: 1;
+  }
+
+  .closing p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing .author {
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    letter-spacing: 1px;
+  }
+
+  /* Footer */
+  .footer-note {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: #a89e96;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero { min-height: 60vh; }
+    .hero h1 { font-size: 2.4rem; }
+    .hero .subtitle { font-size: 1rem; }
+    .principle-img { height: 200px; }
+    .principle-body { padding: 28px 24px 32px; }
+    .principle h2 { font-size: 1.25rem; }
+    .container { padding: 40px 16px; }
+    .intro { font-size: 1.1rem; }
+  }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+
+  /* Fade in animation */
+  .principle {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .principle:nth-child(2) { animation-delay: 0.1s; }
+  .principle:nth-child(3) { animation-delay: 0.2s; }
+  .principle:nth-child(4) { animation-delay: 0.3s; }
+  .principle:nth-child(5) { animation-delay: 0.4s; }
+  .principle:nth-child(6) { animation-delay: 0.5s; }
+  .principle:nth-child(7) { animation-delay: 0.6s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+<base target="_blank">
 </head>
 <body>
-    <article>
-        <h1>The art of presence</h1>
-        <div class="subhead">Intimacy that lingers — slow, connected, real.</div>
 
-        <div class="principle">
-            <strong>1. Slow down like you’ve got all the time in the world</strong>
-            <p>Most guys rush. A pro doesn’t. He builds tension. He teases, pauses, changes pace. That anticipation? That’s what drives her crazy more than speed ever will.</p>
-        </div>
+  <header class="hero">
+    <img src="https://images.pexels.com/photos/792777/pexels-photo-792777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Romantic couple holding hands with warm lights" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>The Art of Presence</h1>
+      <p class="subtitle">Intimacy that lingers — slow, connected, and deeply real.</p>
+      <p class="meta">Intimate Wellness &mdash; May 2026</p>
+    </div>
+    <div class="scroll-hint">Scroll to explore</div>
+  </header>
 
-        <div class="principle">
-            <strong>2. Pay attention to her reactions, not your plan</strong>
-            <p>Forget memorized “moves.” Watch her breathing, her sounds, how her body responds. When something works, stay there. When it doesn’t, switch it up. She’ll feel like you just <span class="highlight">get</span> her.</p>
-        </div>
+  <div class="container">
+    <p class="intro">
+      True intimacy isn't about performance or technique. It's about presence, patience, and the quiet confidence of someone who truly sees the person in front of them.
+    </p>
 
-        <div class="principle">
-            <strong>3. Confidence without ego</strong>
-            <p>There’s a difference between trying to impress and just being present. Lead, but don’t dominate the moment like it’s a performance. Relaxed confidence makes her feel safe to let go.</p>
+    <article class="principle">
+      <img src="https://images.pexels.com/photos/3753108/pexels-photo-3753108.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple in warm intimate moment with soft light" class="principle-img">
+      <div class="principle-body">
+        <div class="principle-header">
+          <span class="number">1</span>
+          <h2>Slow Down Like You've Got All the Time in the World</h2>
         </div>
-
-        <div class="principle">
-            <strong>4. Use your hands, voice, and presence — not just one thing</strong>
-            <p>It’s not just about the obvious. Touch her in different ways, guide her gently, whisper something in her ear. The full experience matters, not just one part of it.</p>
-        </div>
-
-        <div class="principle">
-            <strong>5. Stay connected, not disconnected</strong>
-            <p>Eye contact, closeness, little smiles… that connection keeps things intense. When she feels you’re actually with her and not just in your own zone, everything hits deeper.</p>
-        </div>
-
-        <div class="after-note">
-            <span class="small-head">6. After matters just as much as during</span>
-            <p>A lot of guys miss this. Stay close, talk, hold her, keep the vibe warm. That’s what makes her think about you long after and want it again.</p>
-        </div>
-
-        <div class="footer-note">
-            presence over performance · connection over technique
-        </div>
+        <p>
+          Most people rush. A true partner doesn't. They build tension deliberately, tease with intention, pause to let anticipation breathe, and change pace to keep the moment alive. That sense of anticipation, that delicious waiting, is what creates intensity far more than speed ever could. <span class="highlight">Patience is the most underrated skill in intimacy.</span>
+        </p>
+      </div>
     </article>
+
+    <article class="principle">
+      <img src="https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple with eye contact and emotional connection" class="principle-img">
+      <div class="principle-body">
+        <div class="principle-header">
+          <span class="number">2</span>
+          <h2>Pay Attention to Her Reactions, Not Your Plan</h2>
+        </div>
+        <p>
+          Forget memorized moves or scripted sequences. Watch her breathing, listen to her sounds, feel how her body responds in real time. When something works, stay there. When it doesn't, switch without hesitation. She'll feel like you just <em>get</em> her, because you're responding to her, not to an idea in your head. <span class="highlight">The best lovers are the best listeners.</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="principle">
+      <img src="https://images.pexels.com/photos/1024967/pexels-photo-1024967.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple embracing with relaxed confidence" class="principle-img">
+      <div class="principle-body">
+        <div class="principle-header">
+          <span class="number">3</span>
+          <h2>Confidence Without Ego</h2>
+        </div>
+        <p>
+          There's a world of difference between trying to impress and simply being present. Lead with assurance, but don't dominate the moment like it's a stage performance. Relaxed confidence makes her feel safe enough to let go, to be vulnerable, to meet you fully. <span class="highlight">True confidence is quiet; it doesn't need to announce itself.</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="principle">
+      <img src="https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple whispering close and intimate" class="principle-img">
+      <div class="principle-body">
+        <div class="principle-header">
+          <span class="number">4</span>
+          <h2>Use Your Hands, Voice, and Presence — Not Just One Thing</h2>
+        </div>
+        <p>
+          Intimacy isn't about a single act or focus. Touch her in different ways, guide her gently, whisper something unexpected in her ear. The full sensory experience matters: the warmth of your palm, the tone of your voice, the way you hold space for her. <span class="highlight">Every sense is a doorway to deeper connection.</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="principle">
+      <img src="https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple with deep eye contact and closeness" class="principle-img">
+      <div class="principle-body">
+        <div class="principle-header">
+          <span class="number">5</span>
+          <h2>Stay Connected, Not Disconnected</h2>
+        </div>
+        <p>
+          Eye contact, physical closeness, little smiles in the quiet moments, that unspoken understanding between breaths — this connection is what keeps things intense. When she feels you're actually <em>with</em> her and not lost in your own zone, everything lands deeper. <span class="highlight">Presence is the greatest gift you can give.</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="principle">
+      <img src="https://images.pexels.com/photos/1024967/pexels-photo-1024967.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple cuddling after intimate moment" class="principle-img">
+      <div class="principle-body">
+        <div class="principle-header">
+          <span class="number">6</span>
+          <h2>After Matters Just as Much as During</h2>
+        </div>
+        <p>
+          This is where so many miss the mark. Stay close. Talk softly. Hold her. Keep the warmth alive. The way you are in the aftermath is what makes her think about you long after the moment has passed, what makes her want to return. <span class="highlight">The ending is the beginning of the next time.</span>
+        </p>
+      </div>
+    </article>
+
+    <div class="closing">
+      <p>"The best intimate moments aren't remembered for what was done, but for how they made someone feel seen, safe, and truly wanted."</p>
+      <p class="author">— A note on mindful connection</p>
+    </div>
+
+    <div class="footer-note">
+      presence over performance · connection over technique
+    </div>
+  </div>
+
 </body>
 </html>
