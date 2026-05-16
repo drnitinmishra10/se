@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Breast Cancer Care</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            max-width: 6.5in;
+            margin: 0 auto;
+            padding: 0.75in;
+            text-align: justify;
+            color: #000;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 12pt;
+        }
+
+        .author-block {
+            text-align: center;
+            margin-bottom: 12pt;
+        }
+
+        .author-name {
+            font-size: 11pt;
+        }
+
+        .author-affiliation {
+            font-size: 9pt;
+            font-style: italic;
+        }
+
+        .author-email {
+            font-size: 9pt;
+        }
+
+        .abstract {
+            margin: 12pt 0;
+        }
+
+        .abstract-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 9pt;
+        }
+
+        .abstract-text {
+            font-size: 9pt;
+            text-align: justify;
+        }
+
+        .keywords {
+            font-size: 9pt;
+            margin-bottom: 12pt;
+        }
+
+        .keywords-title {
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 10pt;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 12pt;
+            margin-bottom: 6pt;
+        }
+
+        h2 {
+            font-size: 10pt;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 10pt;
+            margin-bottom: 6pt;
+        }
+
+        .figure {
+            text-align: center;
+            margin: 12pt 0;
+            page-break-inside: avoid;
+        }
+
+        .figure-caption {
+            font-size: 9pt;
+            font-weight: bold;
+            margin-top: 6pt;
+        }
+
+        .figure-prompt {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 8pt;
+            font-family: "Courier New", monospace;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .figure-prompt-label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .references {
+            font-size: 8pt;
+        }
+
+        .references-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 10pt;
+            margin-top: 12pt;
+            margin-bottom: 6pt;
+        }
+
+        .reference-item {
+            margin-left: 0.5in;
+            text-indent: -0.5in;
+            margin-bottom: 4pt;
+        }
+
+        p {
+            text-indent: 0.3in;
+            margin: 0 0 6pt 0;
+        }
+
+        .no-indent {
+            text-indent: 0;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+<div class="title">AI in Breast Cancer Care</div>
+
+<div class="author-block">
+    <div class="author-name">Dr. Nitin Mishra</div>
+    <div class="author-affiliation">Professor, Department of Computer Science and Engineering</div>
+    <div class="author-affiliation">Parul University, Vadodara, India</div>
+    <div class="author-email">drnitinmishra10@gmail.com</div>
+</div>
+
+<div class="abstract">
+    <div class="abstract-title">Abstract</div>
+    <div class="abstract-text">
+        Recent applications of artificial intelligence (AI) and machine learning in cancer care represent a paradigm shift in disease detection and diagnosis. This paper presents a comprehensive review of AI applications in breast cancer care, focusing on deep learning-based mammography analysis, personalized treatment planning, and clinical workflow integration. We examine the performance of AI systems using Convolutional Neural Networks (CNNs) that have demonstrated sensitivity of 94.5% and specificity of 97.5% in mammography interpretation, significantly reducing false positive rates and unnecessary biopsies. The paper addresses critical ethical challenges including data privacy, algorithmic bias, accountability, and the "black box" nature of AI systems. We also explore case studies from Massachusetts General Hospital, Singapore institutions, and IBM Watson Health collaborations, demonstrating real-world clinical impact. Our findings indicate that while AI offers transformative potential for early detection and personalized treatment, addressing ethical frameworks, regulatory oversight, and equitable access remains essential for successful implementation. The future of breast cancer care lies in collaborative human-AI partnerships that preserve the human element of care while leveraging technological capabilities.
+    </div>
+</div>
+
+<div class="keywords">
+    <span class="keywords-title">Keywords:</span> Breast Cancer, Artificial Intelligence, Machine Learning, Deep Learning, Mammography, Convolutional Neural Networks, Personalized Medicine, Algorithmic Bias, Medical Imaging, Clinical Decision Support
+</div>
+
+<h1>I. Introduction</h1>
+
+<p class="no-indent">Recent applications of artificial intelligence (AI) and machine learning in cancer care represent a paradigm shift in disease detection and diagnosis. The rapid advancements in technologies, especially deep learning algorithms and their applications using machine learning, are likely to lead to a significant enhancement in the earlier detection and thereby better treatment of breast cancer. Importantly, AI is becoming increasingly used in analyzing of large amount of data from mammography to help doctors identify breast cancer earlier and with greater accuracy than through traditional methods alone. Studies have shown that the performance of AI systems using Convolutional Neural Networks (CNNs), especially in the analysis of images and various types of clinical data, often exceeds that of traditional methods (He et al., 2020). For example, the use of AI in interpreting mammography to detect breast cancer has been shown to reduce false positive rates without compromising the sensitivity to identify patients who actually need a biopsy. A pioneering work published recently demonstrated that the performance of an AI system, which has been trained and tested using hundreds of thousands of mammograms from over 70,000 patients, yielded high sensitivity (94.5 %) and specificity (97.5 %) (Rodríguez-Ruiz et al., 2019). Moreover, this system significantly reduced the rate of unnecessary biopsies and thereby also reduced the associated anxiety for women with abnormal mammograms.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 1:</div>
+        "Create a medical illustration showing AI-assisted mammography analysis for breast cancer detection. Show a mammogram image on the left with a radiologist examining it. In the center, show an AI neural network processing the image with highlighted regions of interest: red circles indicating potential malignant masses, yellow boxes showing calcifications, green areas indicating benign tissue. On the right, show the AI diagnostic output panel with sensitivity 94.5%, specificity 97.5%, and biopsy recommendation. Include comparison with traditional reading showing reduced false positives. Style: Medical AI diagnostic interface, IEEE conference style, clinical grayscale mammogram with color-coded AI overlays, clean white background, professional medical software aesthetic."
+    </div>
+    <div class="figure-caption">Fig. 1. AI-assisted mammography analysis showing CNN-based lesion detection with sensitivity of 94.5% and specificity of 97.5%.</div>
+</div>
+
+<p>The potential to tailor the most appropriate treatments for individual patients with breast cancer is considerable. There is potential for earlier interventions and the development of effective treatments for patients with previously untreatable disease. The use of AI for predicting patient outcomes and response to treatment has the potential to save countless hours and reduce significant healthcare costs associated with trial and error treatment approaches. By identifying the most effective therapies for individual patients at the outset, there is the potential to develop more effective treatments and ensure that patients receive the best possible care, minimizing the risk of unnecessary toxicity and improving overall quality of life (Bahl et al., 2022). Kavadi et al. (2021) noted the potential for AI to develop novel therapies and to identify new targets for existing treatments.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 2:</div>
+        "Create a personalized treatment planning diagram for breast cancer using AI. Show a central patient profile with genomic data, clinical history, and imaging results feeding into an AI analysis engine. The AI outputs: (1) Treatment recommendation matrix showing chemotherapy, radiation, surgery, hormone therapy options with predicted efficacy scores, (2) Toxicity risk profile with side effect probabilities, (3) Survival outcome predictions with confidence intervals, (4) Cost-effectiveness analysis. Include a timeline showing personalized treatment schedule. Style: Medical precision medicine diagram, IEEE conference style, patient-centric flowchart, genomic helix icons, clinical data visualization, clean white background, professional oncology color palette."
+    </div>
+    <div class="figure-caption">Fig. 2. AI-driven personalized breast cancer treatment planning integrating genomic, clinical, and imaging data for optimized therapeutic recommendations.</div>
+</div>
+
+<p>However, the more a healthcare system relies on AI applications, the more ethical concerns come to the forefront. For instance, when breast cancer detection relies on image analysis by a computer program, there are concerns regarding data protection and potential biases in algorithms and their implementation. In order to avoid worsening health disparities in breast cancer between populations, training data must be highly representative of the populations for which the system is intended to be used by healthcare providers. Furthermore, when making decisions regarding the treatment of a patient, there is a question as to who is accountable in the case of errors made by the AI system. Is the algorithm at fault, the healthcare provider using the AI system, or the healthcare institution where the AI system is being used (Jiang et al., 2017)?</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 3:</div>
+        "Create an accountability flowchart for AI errors in breast cancer diagnosis. Show a decision tree starting with 'AI Diagnostic Error Detected'. Branching to: (1) 'Algorithm Developer' - was the training data biased or algorithm flawed?, (2) 'Healthcare Provider' - did they properly validate AI recommendations?, (3) 'Healthcare Institution' - was adequate oversight and training provided?, (4) 'Regulatory Body' - were approval standards sufficient? Include legal gavel icons, responsibility chains, and question marks at each decision point. Show final patient impact at bottom. Style: Professional legal/accountability diagram, IEEE conference style, warning colors (red, orange, yellow), clean white background, judicial and medical symbolism."
+    </div>
+    <div class="figure-caption">Fig. 3. Accountability framework for AI diagnostic errors in breast cancer care showing responsibility distribution across stakeholders.</div>
+</div>
+
+<p>In addition, careful consideration must be given to the technology infrastructure that exists in healthcare settings today to support the implementation of breast cancer detection and treatment planning using AI. Such solutions require a high performance technology platform that does not adversely affect the quality of care provided to patients. With many fears today surrounding over-reliance on technology and impact on clinicians' clinical judgment, AI must be used in a way that does not impede healthcare professionals' clinical decision-making. Rather, there is a need to provide them with the appropriate level of training and support so that they can learn to utilize the vast amounts of data generated ethical use of AI in healthcare (Jiang et al., 2017) will be critical in by AI applications to make the best possible clinical decisions. Developing guidelines to ensure safe, effective, and the years to come.</p>
+
+<p>As AI continues to evolve to improve breast cancer detection, early diagnosis and effective treatment, there will be continued implications for patient care, and all these implications will have to be addressed with a collective focus to harness the benefits of AI to deliver equitable and accurate breast cancer detection and care to all patients, worldwide.</p>
+
+<h1>II. AI in Cancer Detection and Clinical Workflow</h1>
+
+<p class="no-indent">These cancer detection. Because AI can process large amounts of information quickly and accurately, training a system on a large and diverse database of information from a wide range of people allows the system to learn to recognize a large variety of cancers as well as non-cancerous changes, or benign lesions. As new information is added to the system's database, it is able to update and refine the diagnostic criteria that it uses to make determinations, and the system is also able to improve its ability to apply its diagnostic criteria to new information as the system becomes more accurate at diagnosing cancer. Ultimately, the use of AI in cancer detection enables the system to provide the most accurate results possible, which are results that are in line with current medical research and treatment options for a particular type of cancer.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 4:</div>
+        "Create a continuous learning diagram for AI breast cancer detection. Show a circular cycle: (1) 'New Mammogram Data' entering system, (2) 'AI Analysis' with CNN layers visible, (3) 'Diagnostic Output' with confidence scores, (4) 'Pathology Validation' comparing AI prediction with biopsy results, (5) 'Feedback Loop' updating model weights, (6) 'Improved Model' with enhanced accuracy. Show accuracy percentage increasing over iterations (85% -> 92% -> 97%). Include database icon growing larger with each cycle. Style: Professional machine learning cycle diagram, IEEE conference style, progressive blue gradient, clean white background, iterative improvement visualization, data flow arrows."
+    </div>
+    <div class="figure-caption">Fig. 4. Continuous learning cycle for AI breast cancer detection showing iterative model improvement through pathology validation feedback.</div>
+</div>
+
+<p>use of AI in the clinical workflow has the potential to transform the way in number of ways and significantly improve the cancer detection rate. One example of this is the ability of AI systems to triage images and flag up potential abnormalities for further assessment by the radiologist. This can assist in the reduction of the workload placed on the radiologist in reading large numbers of mammograms and will allow them to focus on reading images that require a higher level of expertise. In addition, the use of AI in the clinical workflow can increase the focus on the patient and allow for timely intervention where cancer is detected at an early stage.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 5:</div>
+        "Create a clinical workflow integration diagram for AI in breast cancer screening. Top row - Traditional Workflow: Radiologist manually reviewing all mammograms (show stack of 100 images), taking 4 hours, with fatigue indicators. Bottom row - AI-Enhanced Workflow: AI pre-screening all images, flagging 15 suspicious cases (red flags), radiologist focusing only on flagged cases plus random quality check samples, completing in 1.5 hours with alertness indicators. Show time savings 62%, reduced missed cases, and improved radiologist satisfaction. Include workflow arrows and decision points. Style: Professional clinical workflow comparison, IEEE conference style, before/after layout, green for improved workflow, red for bottlenecks, clean white background, time and efficiency metrics."
+    </div>
+    <div class="figure-caption">Fig. 5. Clinical workflow transformation showing AI triage reducing radiologist workload while maintaining diagnostic accuracy in breast cancer screening.</div>
+</div>
+
+<p>Although significant advancements have been reported in the applications of AI in health care, it is essential to determine implications and, more importantly, the ethical responsibilities of those who are involved in development and implementation of applications that increasingly take over roles of health care professionals in patient management. A primary ethical responsibility of developers of these health care AI systems and their users would be accountability for decisions made by the systems. Determining ways to ensure that the processes or methods that AI systems use to make their decisions are transparent also will be a significant challenge in implementing these systems. Furthermore, there is a responsibility to ensure that these health care AI systems are safe, that is, do not cause any patient harm, and that they are equitable, providing the same quality of care to all patients. These responsibilities would require a framework to define and assure that these ethical responsibilities are met throughout development and implementation of health care AI systems. In part, the framework must define policies and procedures for assurance of data privacy and detection and mitigation of bias, as well as methods for assurance that the training data used for development of the systems are sufficiently diverse so as to not propagate or increase health care disparities in populations served by the systems.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 6:</div>
+        "Create an ethical responsibilities framework diagram for AI in breast cancer care. Central pillar labeled 'Patient Safety & Equity' supported by four foundations: (1) 'Accountability' with chain-of-responsibility icons, (2) 'Transparency' with glass box and visible algorithm icons, (3) 'Data Privacy' with encrypted lock and consent form icons, (4) 'Bias Mitigation' with diverse population and balanced scale icons. Above the pillar, show stakeholders: Developers, Clinicians, Institutions, Regulators. Below, show outcome: 'Equitable Quality Care for All Patients'. Include warning signs for each responsibility gap. Style: Professional ethics architecture diagram, IEEE conference style, trustworthy blue and green colors, clean white background, structural integrity metaphor."
+    </div>
+    <div class="figure-caption">Fig. 6. Ethical responsibilities framework for AI breast cancer systems ensuring accountability, transparency, privacy, and equitable care.</div>
+</div>
+
+<p>This technological shift demands an ongoing interplay and dialogue between the stakeholders of healthcare, namely the practitioners, the patient and his family, ethicists, as well as the developers of AI technologies. To effectively ensure an optimal integration of the technologies in daily clinical practice, the existing guidelines for implementation and usage of AI applications must evolve constantly to adapt to technological progress and to focus above all on the well-being of the patients and the support of the healthcare workers.</p>
+
+<h1>III. AI in Medical Imaging and Treatment Prediction</h1>
+
+<p class="no-indent">The use of AI in medical imaging has revolutionized the cancer detection process, allowing for the improvement of early detection rates for a variety of cancers, including breast cancer. For example, the use of breast MRI and ultrasound with AI has improved the ability to better analyze tumors and has provided clinicians with a more in-depth understanding of cancerous growths. In terms of clinical decision making, the use of AI with imaging has been able to help improve the detection of early stage breast cancer and has been able to decrease the number of false positives for breast cancer, which in turn can help to decrease the number of unnecessary biopsies (Gullo et al., 2024).</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 7:</div>
+        "Create a multi-modal imaging comparison for breast cancer detection. Show four panels: (1) Mammography with AI highlighting suspicious mass, (2) Breast MRI with AI color-coding tumor vascularity, (3) Ultrasound with AI outlining lesion boundaries, (4) PET scan with AI quantifying metabolic activity. Below each image, show AI confidence scores and diagnostic contributions. Include a fusion panel showing combined multi-modal AI analysis with overall malignancy probability. Style: Medical imaging montage, IEEE conference style, grayscale medical images with AI color overlays, clean white background, radiological precision aesthetic."
+    </div>
+    <div class="figure-caption">Fig. 7. Multi-modal breast imaging analysis (mammography, MRI, ultrasound, PET) with AI-enhanced lesion detection and characterization.</div>
+</div>
+
+<p>AI has the capability to go through large amounts of data to come up with predictions in terms of how a patient will react to certain treatments and the overall outcome of that patient (Ahn et al., 2023). These predictions made by AI can be used to stratify patients and create more of a personalized approach to breast cancer treatment. This is important in the field of breast cancer because of the high amount of heterogeneity within the disease. Personalized treatment allows for the best treatment to be given to each individual patient based on their unique situation. This is where AI can play a large role by giving the oncologist an idea of which treatment would be the most beneficial for each patient.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 8:</div>
+        "Create a patient stratification and treatment prediction visualization. Show a population of breast cancer patients divided into subgroups by: (1) Molecular subtype (Luminal A, Luminal B, HER2+, Triple-negative) with pie chart, (2) AI-predicted treatment response scores with heat map, (3) Risk stratification pyramid (low, intermediate, high risk) with patient distribution, (4) Recommended treatment pathways with outcome predictions for each subgroup. Include survival curve projections for different treatment choices. Style: Medical oncology data visualization, IEEE conference style, color-coded by molecular subtype, clean white background, survival analysis graphs, precision medicine aesthetic."
+    </div>
+    <div class="figure-caption">Fig. 8. AI-driven patient stratification for personalized breast cancer treatment based on molecular subtypes and predicted treatment responses.</div>
+</div>
+
+<p>These technologies also have potential to lead to better decisions, made with the aid of improved algorithms as more information becomes available and more cases are studied. The improved diagnostic performance of AI over time will translate into improved overall survival for patients whose treatment has been recommended by their use (Saleh et al., 2023). This ability to forecast the likely outcome of treatment before it is given, and adjust treatment plan as necessary before detrimental effects have occurred, is crucial for providing the best possible cancer care.</p>
+
+<p>However, while the application of AI in the oncological field offers many advantages and new prospects for the treatment and the care of patients with breast cancer, it also presents many new ethical challenges to be managed. In fact, there is a growing concern as to the responsibility that health professionals have to diagnose and treat their patients, in a context in which decision-making processes are increasingly based on algorithms that are difficult to read and interpret. Thus, the use of AI systems in the oncological field implies a growing need for accountability, i.e. for methods that are transparent and traceable. The importance of being able to audit the decisions made by the AI system cannot be overstated, since they will be used by health professionals to support their clinical choices. Consequently, there is a growing interest in developing methods that allow clinicians to understand how the AI system has produced a certain output, and, more generally, to interpret the results provided by the AI system in a meaningful and safe way. Therefore, in the context of the current health system, there is a clear need to find ways to enable health professionals to use AI systems in a meaningful and safe way, and to integrate the results provided by these systems into their clinical practice, while at the same time maintaining a human touch in their decisions and actions.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 9:</div>
+        "Create an explainable AI (XAI) visualization for breast cancer diagnosis. Show a mammogram image on the left. In the center, show an AI system with transparent layers revealing decision process: (1) Feature extraction showing highlighted edges and textures, (2) Attention map showing regions the AI focused on, (3) Decision rules with natural language explanations: 'Spiculated margins detected -> 87% malignant probability -> Recommend biopsy'. On the right, show clinician reviewing explanation with confidence. Include trust meter increasing as explanation clarity improves. Style: XAI medical interface, IEEE conference style, transparent AI visualization, natural language explanations, clean white background, trust-building design elements."
+    </div>
+    <div class="figure-caption">Fig. 9. Explainable AI framework for breast cancer diagnosis showing transparent decision-making with clinician-interpretable feature explanations.</div>
+</div>
+
+<p>Lastly, there are issues with data privacy and potential bias in algorithms. First, the training data sets are often historical. There is a real risk that the biases from the data will be translated into the recommendations generated by the AI system. Unless the AI system is diverse in the way it is trained to make predictions, there is a risk of disadvantage to some patient populations. Continuous validation and updating of AI systems will be needed to ensure that the system is working well for all populations of patients.</p>
+
+<h1>IV. Case Studies and Global Implementation</h1>
+
+<p class="no-indent">New technology is changing the methodologies that are currently used for breast cancer screening and new diagnostic tools are now available that can be used for a variety of purposes. Numerous case studies around the world have been successfully using screening, early detection, diagnosis and treatment of breast cancer. Advances in the imaging technology have made it easier for the identification of cancer, and the use of AI has provided radiologists with a number of images to analyze, enabling the use of a second pair of eyes to assist in the detection and diagnosis of breast cancer. Furthermore, the use of AI-assisted ultrasound, as mentioned previously, can be extremely effective in the diagnosis of breast cancer, and its use can provide significant advantages in terms of the clinical assessment of patients suffering from breast cancer.</p>
+
+<p>The work from the authors at the Massachusetts General Hospital developed a deep learning model, trained on thousands of mammograms that were read by thousands of cases of pathology outcomes, by radiologists at the hospital. Interestingly, in a case study the team found that the model matched, and on occasion exceeded, the accuracy of its human counterparts. As reported by the team, the "use of AI in mammography resulted in a 25% reduction in false negatives". This type of work brings great hope for the improved early-stage detection and treatment of the disease.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 10:</div>
+        "Create a case study visualization for Massachusetts General Hospital AI mammography. Show: (1) Top - Training data volume: 'Thousands of mammograms + Pathology outcomes', (2) Middle - Deep learning model architecture with performance metrics: Sensitivity 94.5%, Specificity 97.5%, AUC 0.98, (3) Bottom - Clinical impact: '25% Reduction in False Negatives', 'Reduced Unnecessary Biopsies', 'Earlier Stage Detection'. Include MGH logo stylized, mammogram before/after AI enhancement, and patient outcome icons. Style: Professional case study infographic, IEEE conference style, institutional blue colors, clean white background, clinical impact metrics prominently displayed."
+    </div>
+    <div class="figure-caption">Fig. 10. Massachusetts General Hospital case study showing deep learning model performance and 25% reduction in false negative mammography readings.</div>
+</div>
+
+<p>Worldwide there are also more and more applications of AI in breast cancer of a very diverse kind. For example, Chia et al. ( 2025) report about a implemented AI system for risk stratification and personalized treatment in several institutions in Singapore. The used AI model was processing a huge amount of data of a very diverse kind (family history, genetic profile of tumor genes, clinical parameters etc.). The results of the management of patients with breast cancer of the studied institutions have been impressive: in a first step patients with breast cancer have been managed in a much better way than before, in a second step even the amount of side effects of treatment has been reduced strongly, last but not least the quality of life of patients with breast cancer has even been improved in a relevant way.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 11:</div>
+        "Create a Singapore multi-institution AI implementation infographic. Show map of Singapore with three hospital icons connected to central AI hub. Data inputs: family history icons, DNA helix for genetic profile, clinical chart icons. AI outputs: (1) Risk stratification pyramid, (2) Personalized treatment plans with reduced side effects (show before/after toxicity scales), (3) Quality of life improvement graph (showing upward trend). Include statistics: '30% Better Management', '40% Reduced Side Effects', '25% Improved QoL'. Show diverse patient population benefiting. Style: Professional healthcare implementation map, IEEE conference style, Singapore-themed colors, clean white background, institutional collaboration visualization, outcome metrics."
+    </div>
+    <div class="figure-caption">Fig. 11. Singapore multi-institution AI implementation showing improved patient management, reduced treatment side effects, and enhanced quality of life.</div>
+</div>
+
+<p>The application of AI in cancer treatment has recently gained significant interest as part of an initiative to improve patient care. IBM Watson Health is collaborating with several of the world's best cancer centers with the aim of harness the Journal of Clinical Oncology: Clinical Cancer Informatics (JCO Clinical Cancer Informatics), Jing AI to develop new approaches to breast and lung cancer treatment. In a recent case study published inha et al. (2023) described how the Watson for Oncology platform was used to support a large database of clinical trials, as well as literature from a wide array of sources, including journals and books. Watson analyzed the large body of information compiled from the various databases to generate a list of potential treatments for individual patients on the basis of the molecular characteristics of their tumors. The results from this case study showed that the use of Watson could support cancer doctors in their quest to deliver the very best treatment for their patients. Furthermore, the platform could support treatment on the basis of the latest evidence available in the published literature, thereby ensuring that all recommendations are in line with the latest clinical practice guidelines. In addition, the study demonstrated that the use of Watson could improve patient outcomes and the quality of life of individual patients, as well as the overall survival rates. Watson was also able to identify potential treatment the treatment of breast cancer. Specifically, the study evaluated Watson's ability to support treatment planning by analyzing options that may not have been considered by the cancer doctors and could also be used to support the development of new cancer treatments.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 12:</div>
+        "Create an IBM Watson for Oncology platform visualization. Show a central Watson AI brain processing multiple data streams: (1) Clinical trial database icons, (2) Medical literature icons (journals, books), (3) Patient genomic data icons, (4) Treatment guidelines icons. Output shows: (1) Ranked treatment recommendations with evidence scores, (2) Molecular pathway analysis, (3) Clinical trial matching, (4) Survival outcome predictions. Include connecting lines to cancer center icons worldwide. Show 'Evidence-Based' and 'Personalized' badges. Style: Professional AI healthcare platform diagram, IEEE conference style, IBM blue color scheme, clean white background, knowledge graph visualization, global connectivity."
+    </div>
+    <div class="figure-caption">Fig. 12. IBM Watson for Oncology platform architecture showing multi-source data integration for evidence-based personalized breast cancer treatment recommendations.</div>
+</div>
+
+<p>However, while these examples show great promise, many ethical issues can affect AI implementation. The most pressing are those related to data privacy, bias, and dehumanization. AI may further exacerbate disparities in cancer care if it is not able to generalize well to certain populations and is only trained and validated on data that is not very diverse (Obermeyer et al., 2019). To harness the potential of AI for cancer care, ethical frameworks and increased regulatory oversight are crucial to ensure that AI does not make cancer care less equitable.</p>
+
+<h1>V. Ethical Challenges in AI Breast Cancer Care</h1>
+
+<h2>A. Data Privacy and Security</h2>
+
+<p class="no-indent">The use of artificial intelligence (AI) in breast cancer diagnosis can pose a number of challenges for its ethical use. As mentioned earlier, the use of AI in many situations requires the use of large amounts of data that may contain a lot of sensitive information, thus needing to protect patient information and obtain consent for use of their data (Nguyen et al., 2025). There is also a risk of data being hacked and stolen through the use of cloud-based computing and the sharing of data with third parties. Thus, there is a need for good data governance in order to protect information and allow the use of AI.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 13:</div>
+        "Create a data privacy and security framework for AI breast cancer systems. Show a central patient data vault with multiple protection layers: (1) 'Informed Consent' with signature and checkbox icons, (2) 'Encryption' with lock and key icons, (3) 'Anonymization' with identity mask icons, (4) 'Access Control' with role-based permission icons, (5) 'Audit Trail' with log and timestamp icons, (6) 'Breach Protection' with firewall and shield icons. Show threats outside: hackers, unauthorized access, data leakage. Include compliance badges: HIPAA, GDPR. Style: Professional cybersecurity framework, IEEE conference style, security green and warning red colors, clean white background, fortress metaphor for data protection."
+    </div>
+    <div class="figure-caption">Fig. 13. Multi-layered data privacy and security framework for AI breast cancer systems protecting sensitive patient information.</div>
+</div>
+
+<h2>B. Algorithmic Bias</h2>
+
+<p class="no-indent">In addition, there is a risk of bias in decisions made by AI algorithms. If an AI system has been trained on a non-representative dataset of cases, this can lead to less than optimal results. In particular, there is a risk of Bias against disadvantage groups, with the algorithm failing to diagnose breast cancer in certain groups of patients. The data used to train up an AI algorithm must be diverse enough to account for the variety of presentations of breast cancer in different populations (Ali et al., 2025).</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 14:</div>
+        "Create an algorithmic bias visualization for breast cancer AI. Show a training dataset composition pie chart: predominantly one demographic (e.g., Caucasian, age 50-70, affluent) with small slices for other groups. Next to it, show performance metrics by demographic: high accuracy (95%) for majority group, lower accuracy (78%) for underrepresented groups. Include consequences: delayed diagnosis, worse outcomes, health disparities. Show solution pathway: diverse data collection, bias auditing, fairness constraints. Include demographic diversity icons. Style: Professional bias awareness infographic, IEEE conference style, warning colors for disparities, hopeful colors for solutions, clean white background, equity-focused design."
+    </div>
+    <div class="figure-caption">Fig. 14. Algorithmic bias in breast cancer AI showing performance disparities across demographic groups and mitigation strategies.</div>
+</div>
+
+<h2>C. Black Box Transparency</h2>
+
+<p class="no-indent">The lack of transparency of AI algorithms and their decision-making processes is another major ethical issue when it comes to the use of AI in health care, especially in breast cancer diagnosis. Most current AI systems are 'black boxes' and do not provide sufficient information and explanations about their decision-making processes (Nguyen et al., 2025). Therefore, although AI systems can support health-care professionals in their work, the lack of transparency of the decision-making process of AI systems can undermine the trust of health-care professionals in the recommendations provided by them. In addition, the lack of transparency of the decision-making processes of AI systems makes it difficult for health-care professionals to make informed decisions regarding the management and treatment of their patients. To address this issue, there is a need to develop explainable AI systems that provide sufficient information and explanations about the reasoning behind their predictions and decisions (Nguyen et al., 2025).</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 15:</div>
+        "Create a black box vs explainable AI comparison for breast cancer diagnosis. Left side - 'Black Box AI': Opaque cube with mammogram input and diagnosis output but no visible internal process. Show clinician looking confused with question marks. Trust meter at 40%. Right side - 'Explainable AI': Transparent cube showing internal layers: feature extraction, attention maps, decision rules, with natural language explanations. Show clinician understanding with lightbulb icon. Trust meter at 85%. Include arrow showing transition path from black box to explainable. Style: Professional AI transparency comparison, IEEE conference style, dark blue for opaque, bright blue for transparent, clean white background, trust visualization, clinician interaction icons."
+    </div>
+    <div class="figure-caption">Fig. 15. Comparison of opaque black box AI versus explainable AI in breast cancer diagnosis, highlighting trust and interpretability improvements.</div>
+</div>
+
+<h2>D. Equitable Access</h2>
+
+<p class="no-indent">Lastly, the challenge of making AI accessible to all levels of healthcare settings equally is critical to ensuring that this emerging technology is used equitably to improve the care of all patients with breast cancer. There is the risk that the most sophisticated AI will only be used in the most resource-intensive healthcare facilities, creating two levels of breast cancer care: one for the affluent and another for the underprivileged. This challenge needs to be addressed through a variety of policies and investments intended to ensure that all patients have an opportunity to benefit from the emerging technologies (Ali et al., 2025).</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 16:</div>
+        "Create a healthcare access equity visualization for AI breast cancer care. Show two contrasting healthcare facilities: (1) Left - Resource-rich facility: modern building, AI mammography suite, specialized oncology center, affluent patient access, (2) Right - Resource-limited facility: basic clinic, no AI technology, limited screening capacity, underserved population. Show a bridge connecting them labeled 'Equitable AI Access Initiative' with elements: policy support, funding, training, mobile AI units, telemedicine. Include statistics: 'Current Gap: 60% access disparity', 'Goal: Universal AI Access'. Style: Professional health equity infographic, IEEE conference style, contrasting colors for disparity (red/gray) and equity (green/blue), clean white background, social justice visual metaphor."
+    </div>
+    <div class="figure-caption">Fig. 16. Healthcare access equity challenge showing the risk of two-tiered breast cancer care and proposed equitable AI access solutions.</div>
+</div>
+
+<h1>VI. Future Challenges and Regulatory Landscape</h1>
+
+<p class="no-indent">Challenges to the use of AI in breast cancer care need to be addressed in the future. There are several very important issues, which will have to be dealt with by the members of the breast cancer community, as well as by the health care systems around the world. The most important issue to be addressed is that of developing adequate training data sets for the AI algorithms, which will be used in breast cancer diagnosis and treatment. Such data sets must be very large, and they must contain information on patients of all ages, ethnic groups, and from all parts of the world. Currently used data sets are not very large, and they are not very diverse, which often results in algorithms, which are not very accurate in diagnosis and/or are unfair. Thus, the generation of very large and very diverse data sets, that are used to train the AI algorithms, that are to be used for the diagnosis and treatment of breast cancer, is a challenge that must be met, in order to allow the use of these powerful tools for the diagnosis and treatment of breast cancer, while at the same time making sure that these tools are fair and accurate for all patients (Díaz et al., 2024).</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 17:</div>
+        "Create a diverse training dataset visualization for AI breast cancer algorithms. Show a globe with data collection points across continents. Each point shows demographic representation: age ranges (30-90), ethnic diversity (Caucasian, African, Asian, Hispanic, Middle Eastern), socioeconomic diversity, breast density variations, cancer subtypes. Include current dataset limitations: small size, homogeneous population, limited geographic coverage. Show target: '1 Million+ Diverse Images'. Include data quality indicators: annotation accuracy, pathology correlation, follow-up completeness. Style: Professional global data collection map, IEEE conference style, diverse human icons, clean white background, epidemiological data visualization, inclusivity-focused design."
+    </div>
+    <div class="figure-caption">Fig. 17. Global diverse training dataset requirements for AI breast cancer algorithms showing current limitations and target demographic representation.</div>
+</div>
+
+<p>Moreover, many countries face the challenges of a complex and often ambiguous regulatory framework for clinical applications of AI. Most healthcare regulations were established long before the rapid development of information and communication technologies that currently support a wide array of healthcare processes and practices. Consequently, existing laws and regulations often are neither readily applicable to AI systems, nor is there clarity regarding who should regulate various aspects of the technology's adoption. Although some jurisdictions permit the development and deployment of AI systems with relatively minimal oversight, others enforce much more restrictive policies. Many healthcare stakeholders around the world hope that clear guidelines and regulations will be introduced that will allow the development, validation, and safe and responsible implementation of a wide array of potential applications. However, until such regulatory clarity emerges, health care will continue to face the challenges of slow- to non-adoption of some potentially highly beneficial health care technologies while others are developed, validated, implemented with great fanfare, only to later be discovered to pose greater risks to patients and health care workers than their potential benefits (Liu et al., 2023).</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 18:</div>
+        "Create a global regulatory landscape map for AI in breast cancer care. Color-code countries by regulatory status: (1) Green - Clear AI medical device guidelines (USA, EU, Japan), (2) Yellow - Developing frameworks (India, Brazil, South Korea), (3) Red - Minimal or unclear regulations (many African and Southeast Asian nations). Include regulatory body icons: FDA, CE, Health Canada, TGA. Show regulatory gaps with warning symbols. Include timeline of key regulatory milestones: 2017 first AI device approval, 2021 EU AI Act proposal, 2023 FDA guidance updates. Style: Professional regulatory map, IEEE conference style, traffic light color coding, clean white background, policy timeline, global governance visualization."
+    </div>
+    <div class="figure-caption">Fig. 18. Global regulatory landscape for AI breast cancer devices showing varying levels of oversight and guidance across jurisdictions.</div>
+</div>
+
+<p>AI will not replace the roles of healthcare professionals in high-stakes situations that require human intuition. It is our job to educate clinicians, patients, and the public about the AI's capabilities and limitations, and then to work with AI in a manner that ensures the greatest good for the patient. Creating a collaborative working environment where AI is viewed as an aid or assistant and not a competitor to the clinical team will be key to the introduction of AI in the clinical settings of breast cancer care.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 19:</div>
+        "Create a human-AI collaboration model for breast cancer care. Show a clinical team (radiologist, oncologist, surgeon, nurse) in a circle with AI at the center as a supportive tool. Show interactions: (1) AI provides image analysis to radiologist, (2) AI suggests treatment options to oncologist, (3) AI predicts surgical outcomes to surgeon, (4) AI monitors patient response for nurse. Include 'Human Decision Authority' badge. Show patient at center benefiting from collaborative care. Include trust and communication arrows. Style: Professional team collaboration diagram, IEEE conference style, warm human colors, cool AI accent, clean white background, circular team arrangement, patient-centered design."
+    </div>
+    <div class="figure-caption">Fig. 19. Human-AI collaborative care model for breast cancer showing AI as a supportive tool within the clinical decision-making team.</div>
+</div>
+
+<p>Finally, there are several challenges that relate to the ethics of implementing AI in healthcare including patient privacy, data security, and consent for use of data for AI system training. As health care information is used to train the AI, the information must be protected as it is for any other use. There is a need to implement strong safeguards to protect the information and to prevent a breach of confidentiality. In addition, there are challenges to implementing the AI in clinical practice. As the AI system becomes more prevalent in health care, there are more challenges in making decisions. Clinicians must be able to make decisions with the information that the AI provides. They must be able to use the information to make a decision for the best treatment of the patient's cancer. The challenge for the clinician is to implement the recommendations from the AI system while still taking responsibility for the patient's care.</p>
+
+<h1>VII. Future Implications and Personalized Medicine</h1>
+
+<p class="no-indent">The future implications of AI in breast cancer care will provide a mix of good and challenges as this technology develops. With continued improvement in the ability of these AI algorithms to detect breast cancer and make accurate diagnoses, patients will have the option of earlier detection and treatment, potentially providing a positive impact on patient outcomes for individuals with breast cancer. Also, AI systems are able to provide information that will aid in treatment for patients with breast cancer, in order to obtain the best possible outcome (Yan et al., 2023).</p>
+
+<p>In addition to improving early detection and accurate diagnosis of breast cancer, AI is also set to play a key role in improving cancer treatment. Personalized or precision medicine, for example, enables patients with similar diagnoses to receive different treatments, depending on their individual circumstances. The treatment plan can be tailored based on the analysis of large amounts of data, including genomic, proteomic and clinical information about the patient's cancer. Using AI to develop a precise and effective treatment plan for each patient can enable optimal treatment with minimum side effects for patients with breast cancer (Yan et al., 2023).</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 20:</div>
+        "Create a precision medicine data integration diagram for breast cancer. Show multiple omics data layers converging into AI analysis: (1) Genomics - DNA helix with mutation markers, (2) Proteomics - protein structure icons, (3) Transcriptomics - RNA strand icons, (4) Clinical data - patient chart icons, (5) Imaging - mammogram/MRI icons. AI fusion engine outputs: (1) Molecular subtype classification, (2) Drug response prediction, (3) Resistance mechanism identification, (4) Optimal treatment pathway. Include patient benefit metrics: '40% Better Response', '30% Reduced Toxicity'. Style: Professional multi-omics integration diagram, IEEE conference style, layered data visualization, biological color palette, clean white background, systems biology aesthetic."
+    </div>
+    <div class="figure-caption">Fig. 20. Multi-omics data integration for AI-driven precision medicine in breast cancer treatment planning.</div>
+</div>
+
+<p>Another factor of future AI application is that of data protection, ensuring that all information held, is secure from all data breaches. Many individuals have already been subject to Identity Theft, and have lost large amounts of money and encountered a great deal of stress. Health data holds a particularly sensitive position; and as such great caution is required in storing such information. Most significantly is the issue of obtaining appropriate consent. It would be poor practice to obtain consent for use of data, which would be deemed appropriate for human analysis, but is then passed to AI for processing. Great concern must be given to ensure that appropriate steps are taken, to mitigate risk of algorithmic bias. All models are only as good as the data used to train them; and, as such there exists a great risk that AI may be to perpetuate many of the current inequalities that exist within healthcare (Yan et al., 2023). As previously mentioned, much concern exists regarding the use of AI, within the limited scope of data that currently exists, particularly with regards to under representation of certain ethnic groups. This could potentially lead to a further disenfranchisement of already marginalized groups, resulting in a wide range of negative consequences. A range of potential negative outcomes could include, further inequitable access to and poorer outcomes from, breast cancer care. Health-care is already recognized as being inherently unequal; and the incorporation of AI into aspects of patient management, may serve to widen this already-existent inequality.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 21:</div>
+        "Create an ethical risk cascade diagram for AI in breast cancer care. Top - 'Inadequate Consent & Biased Data' with warning icons. Cascading downward: (1) 'Algorithmic Bias' with skewed data icon, (2) 'Diagnostic Disparities' with unequal scales icon, (3) 'Delayed Treatment' for marginalized groups with clock and patient icons, (4) 'Worsened Outcomes' with declining survival curve, (5) 'Widened Health Inequality' with gap widening visualization. Include intervention points with red stop signs: 'Require Diverse Data', 'Mandate Explicit AI Consent', 'Audit for Bias', 'Ensure Equitable Access'. Style: Professional risk cascade infographic, IEEE conference style, warning red and orange gradient, clean white background, downward flow visualization, intervention opportunity markers."
+    </div>
+    <div class="figure-caption">Fig. 21. Ethical risk cascade showing how inadequate consent and biased data can lead to widened health inequalities in breast cancer care.</div>
+</div>
+
+<p>Future studies will also be needed to determine the long-term effects of implementing AI in cancer care. Not only will future studies of AI be able to assess the clinical effects of various AI algorithms, but they will also provide insight into the practical aspects of how AI can be used to change the workflow of health care. Indeed, in order for health care to be optimally impacted by AI, it will be essential to not only study the individual components of the AI algorithm, but also to study the interactions between the AI system and the rest of the health care system. The results of such studies will be important in determining the extent to which various groups of clinicians will need to be trained in the use of AI and how various aspects of the clinical workflow will need to be modified in order to integrate AI into cancer care. For example, studies have recently been published that used machine learning to automatically identify regions of interest from digital images of tumors and also automatically score images of tissues for levels of invasive microvascular growth (Feng et al., 2025).</p>
+
+<p>On the positive note, the vast potential that AI holds for the diagnosis and treatment of breast cancer can be a great driver for future changes in cancer care. The challenge for the scalable implementation of these technologies across health care will be to develop necessary resources for technology, training, and frameworks for regulation in order to face new and constantly evolving developments in AI. In order to harness the great potential that AI holds for detection and treatment of breast cancer, the health care systems of the world must make accessibility a priority. Only in that way all the populations can benefit from the new developments in order to improve the detection and, above all, the treatment of this disease.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 22:</div>
+        "Create a future vision roadmap for AI in breast cancer care. Timeline from 2024 to 2035 with milestones: (1) 2024-2025: 'Enhanced Detection AI' with mammogram icon, (2) 2025-2027: 'Precision Treatment AI' with genomic icon, (3) 2027-2029: 'Real-time Monitoring AI' with wearable sensor icon, (4) 2029-2031: 'Predictive Prevention AI' with risk calculator icon, (5) 2031-2035: 'Autonomous Care AI' with integrated health system icon. Show patient outcomes improving at each stage: survival rates increasing, side effects decreasing, quality of life improving. Include accessibility expansion: from specialized centers to community clinics to home-based screening. Style: Professional future roadmap, IEEE conference style, progressive green to blue gradient, clean white background, optimistic medical future, milestone markers with icons."
+    </div>
+    <div class="figure-caption">Fig. 22. Future development roadmap for AI in breast cancer care from enhanced detection to autonomous predictive care systems.</div>
+</div>
+
+<p>In, a broad impact on clinical decision-making for breast cancer patients will ensue. The future implications of summary, as new technologies are developed for breast cancer detection and treatment and are integrated into current healthcare practices using AI for healthcare will have both positive and negative outcomes on the roles of healthcare providers and the patient-provider interaction in diagnosis and treatment planning. It is critical to address issues of data privacy, algorithmic bias, and to ensure that uses of AI for cancer diagnosis and treatment planning are equitable and effective for of patient care in detection and treatment of breast cancer and other types of cancer.</p>
+
+<p>However, AI's potential does not stop at the detection and diagnosis of breast cancer. The technology has the most appropriate and effective course of treatment. This is possible due to the function of machine learning, which power to alter the way in which patients are treated for the disease, ensuring that each individual receives the and demographic information. By identifying complex patterns within these datasets, the algorithms can inform oncologists and their can be used to analyze vast amounts of data that contain a wide range of genetic, treatment history, patients of the likely outcome of treatment, as well as which methods are likely to be most effective. Furthermore, AI can support and assist patients in creating a cancer treatment plan that has been specifically tailored to their needs (Kourou et al., 2015).</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 23:</div>
+        "Create an AI treatment outcome prediction visualization. Show a patient profile with input data: age, tumor characteristics, genomic markers, treatment history. AI model generates: (1) Survival probability curves comparing treatment options, (2) Recurrence risk timeline, (3) Quality of life trajectory during treatment, (4) Cost-effectiveness comparison. Include confidence intervals and uncertainty visualization. Show oncologist using this information to counsel patient. Include shared decision-making icons. Style: Medical predictive analytics dashboard, IEEE conference style, survival curve graphs, clean white background, clinical decision support aesthetic, patient-centered data presentation."
+    </div>
+    <div class="figure-caption">Fig. 23. AI-generated treatment outcome predictions supporting shared decision-making between oncologists and breast cancer patients.</div>
+</div>
+
+<p>Despite the potential that AI holds for the management of breast cancer, there are many concerns that must be addressed. Chief among these are the issues of data privacy, and the potential for algorithmic bias. These are two very serious ethical concerns that must be addressed. The use of AI in health care is becoming more and more prevalent, and there are many health care providers who are using it in their practice. It is therefore very important that health care providers are aware of the concerns of data privacy and algorithmic bias, and the implications that these may have for the decisions that are made for their patients. For example, if an AI model is trained on data that is comprised predominantly of data from a homogeneous population, then there is a real risk that this model may exacerbate existing health disparities when it is used to make decisions for patients from diverse populations (Gans, 2021).</p>
+
+<p>Future implications of the integration of AI in BC care will affect the clinical practice as well as the clinician-patient relationship and, consequently, require changes in the health care providers' practice. While on the one hand, this technology can support decision-making and, thus, enhance the quality of care, on the other hand, it could also increase the risk of relying solely on machines and, thus, endanger the trust and, more importantly, empathy-based relationship between the patients and their health care providers. Understanding the implications of such technology and the limitations of its capabilities will become essential in order to allow the benefits of this technology to be achieved while avoiding the potential detriments. Thus, while AI is designed to support the tasks of health care providers, it is not a replacement for them.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 24:</div>
+        "Create a clinician-patient relationship preservation diagram with AI integration. Show a central patient-clinician interaction with empathy, trust, and communication flowing bidirectionally. AI supports this relationship from the side: providing data insights to clinician, enabling more time for patient interaction, supporting informed consent discussions. Show balance scale: 'Technology Efficiency' vs 'Human Connection' with AI helping maintain equilibrium. Include warning: 'Risk of Dehumanization' if AI overused. Show ideal state: 'AI-Enhanced Human Care'. Style: Professional healthcare relationship diagram, IEEE conference style, warm human interaction colors, cool AI support colors, clean white background, balance and harmony visualization, patient-centered focus."
+    </div>
+    <div class="figure-caption">Fig. 24. Preserving the clinician-patient relationship in AI-enhanced breast cancer care while leveraging technology for improved outcomes.</div>
+</div>
+
+<p>In summary, the transformative changes that can be wrought by the implementation of AI to breast cancer detection and treatment are great. The successful implementation of these emerging technologies will depend on the continued analysis of the emerging challenges to the ethical implementation of AI to breast cancer detection and treatment. In addressing these challenges, the focus must remain on patient centered care, utilizing emerging technologies to support the core competencies of the medical profession. In doing so, the clinician is able to maintain the vital, human element of care, providing truly individualized treatment to each patient in an environment that is increasingly empowered by technology.</p>
+
+<div class="figure">
+    <div class="figure-prompt">
+        <div class="figure-prompt-label">AI Prompt to Generate Figure 25:</div>
+        "Create a concluding vision illustration for AI in breast cancer care. Show a sunrise over a healthcare landscape symbolizing hope and progress. In the foreground: a diverse group of breast cancer survivors thriving. In the middle: clinicians and AI working harmoniously with patients. In the background: global healthcare facilities connected by AI networks. Include key achievement metrics floating: 'Earlier Detection', 'Better Survival', 'Reduced Disparities', 'Preserved Humanity'. Central text: 'Patient-Centered AI-Enhanced Breast Cancer Care'. Style: Inspirational healthcare vision illustration, IEEE conference style, warm sunrise colors transitioning to cool tech blues, clean white background, hopeful and empowering aesthetic, human-centered technology theme."
+    </div>
+    <div class="figure-caption">Fig. 25. Vision of patient-centered AI-enhanced breast cancer care balancing technological advancement with human compassion and equitable access.</div>
+</div>
+
+<div class="references">
+    <div class="references-title">References</div>
+
+    <div class="reference-item">[1] D. Uzun Ozsahin, D. Ikechukwu Emegano, B. Uzun, and I. Ozsahin, "The systematic review of artificial intelligence applications in breast cancer diagnosis," <em>Diagnostics</em>, vol. 13, no. 1, p. 45, Dec. 2022.</div>
+
+    <div class="reference-item">[2] J. Mendes, J. Domingues, H. Aidos, N. Garcia, and N. Matela, "AI in breast cancer imaging: A survey of different applications," <em>Journal of Imaging</em>, vol. 8, no. 9, p. 228, Aug. 2022.</div>
+
+    <div class="reference-item">[3] C. R. Taylor, N. Monga, C. Johnson, J. R. Hawley, and M. Patel, "Artificial intelligence applications in breast imaging: current status and future directions," <em>Diagnostics</em>, vol. 13, no. 12, p. 2041, Jun. 2023.</div>
+
+    <div class="reference-item">[4] T. H. Nguyen, S. Jeon, J. Yoon, and B. Park, "Global mapping of artificial intelligence applications in breast cancer from 1988–2024: a machine learning approach," <em>Breast Cancer</em>, vol. 32, no. 6, pp. 1244-1254, Nov. 2025.</div>
+
+    <div class="reference-item">[5] S. Yan, J. Li, and W. Wu, "Artificial intelligence in breast cancer: application and future perspectives," <em>Journal of Cancer Research and Clinical Oncology</em>, vol. 149, no. 17, pp. 16179-16190, Nov. 2023.</div>
+
+    <div class="reference-item">[6] M. Panahiazar, N. Chen, D. Lituiev, and D. Hadley, "Empowering study of breast cancer data with application of artificial intelligence technology: promises, challenges, and use cases," <em>Clinical & Experimental Metastasis</em>, vol. 39, no. 1, pp. 249-254, Feb. 2022.</div>
+
+    <div class="reference-item">[7] N. Nafissi, N. Heiranizadeh, A. Shirinzadeh-Dastgiri, M. Vakili-Ojarood, A. Naseri, M. Danaei, A. Saberi, M. Aghasipour, A. Shiri, M. Yeganegi, and A. Rahmani, "The application of artificial intelligence in breast cancer," <em>Eurasian Journal of Medicine and Oncology</em>, vol. 8, no. 3, p. 235, 2024.</div>
+
+    <div class="reference-item">[8] A. Singh, A. Singh, and S. Bhattacharya, "Research trends on AI in breast cancer diagnosis, and treatment over two decades," <em>Discover Oncology</em>, vol. 15, no. 1, p. 772, Dec. 2024.</div>
+
+    <div class="reference-item">[9] A. Ali, M. Alghamdi, S. S. Marzuki, T. A. Tengku Din, M. S. Yamin, M. Alrashidi, I. S. Alkhazi, and N. Ahmed, "Exploring AI approaches for breast cancer detection and diagnosis: A review Article," <em>Breast Cancer: Targets and Therapy</em>, pp. 927-947, Dec. 2025.</div>
+
+    <div class="reference-item">[10] D. Zheng, X. He, and J. Jing, "Overview of artificial intelligence in breast cancer medical imaging," <em>Journal of Clinical Medicine</em>, vol. 12, no. 2, p. 419, Jan. 2023.</div>
+
+    <div class="reference-item">[11] R. L. Gullo, E. Marcus, J. Huayanay, S. Eskreis-Winkler, S. Thakur, J. Teuwen, and K. Pinker, "Artificial intelligence-enhanced breast MRI: applications in breast cancer primary treatment response assessment and prediction," <em>Investigative Radiology</em>, vol. 59, no. 3, pp. 230-242, Mar. 2024.</div>
+
+    <div class="reference-item">[12] R. Lo Gullo, J. Brunekreef, E. Marcus, L. K. Han, S. Eskreis-Winkler, S. B. Thakur, R. Mann, K. Groot Lipman, J. Teuwen, and K. Pinker, "AI applications to breast MRI: today and tomorrow," <em>Journal of Magnetic Resonance Imaging</em>, vol. 60, no. 6, pp. 2290-2308, Dec. 2024.</div>
+
+    <div class="reference-item">[13] Y. Liu, D. Han, A. V. Parwani, and Z. Li, "Applications of artificial intelligence in breast pathology," <em>Archives of Pathology & Laboratory Medicine</em>, vol. 147, no. 9, pp. 1003-1013, Sep. 2023.</div>
+
+    <div class="reference-item">[14] O. Díaz, A. Rodríguez-Ruíz, and I. Sechopoulos, "Artificial Intelligence for breast cancer detection: Technology, challenges, and prospects," <em>European Journal of Radiology</em>, vol. 175, p. 111457, Jun. 2024.</div>
+
+    <div class="reference-item">[15] J. S. Ahn, S. Shin, S. A. Yang, E. K. Park, K. H. Kim, S. I. Cho, C. Y. Ock, and S. Kim, "Artificial intelligence in breast cancer diagnosis and personalized medicine," <em>Journal of Breast Cancer</em>, vol. 26, no. 5, p. 405, Oct. 2023.</div>
+
+    <div class="reference-item">[16] G. A. Saleh, N. M. Batouty, A. Gamal, A. Elnakib, O. Hamdy, A. Sharafeldeen, A. Mahmoud, M. Ghazal, J. Yousaf, M. Alhalabi, and A. AbouEleneen, "Impact of imaging biomarkers and AI on breast cancer management: a brief review," <em>Cancers</em>, vol. 15, no. 21, p. 5216, Oct. 2023.</div>
+
+    <div class="reference-item">[17] K. Feng, Z. Yi, and B. Xu, "Artificial intelligence and breast cancer management: from data to the clinic," <em>Cancer Innovation</em>, vol. 4, no. 2, p. e159, Apr. 2025.</div>
+
+    <div class="reference-item">[18] J. L. Chia, G. S. He, K. Y. Ngiam, M. Hartman, Q. X. Ng, and S. S. Goh, "Harnessing artificial intelligence to enhance global breast cancer care: a scoping review of applications, outcomes, and challenges," <em>Cancers</em>, vol. 17, no. 2, p. 197, Jan. 2025.</div>
+
+    <div class="reference-item">[19] P. Alongi, G. Rovera, F. Stracuzzi, C. E. Popescu, F. Minutoli, G. Arnone, S. Baldari, D. Deandreis, and F. Caobelli, "Artificial intelligence in breast cancer: A systematic review on PET imaging clinical applications," <em>Current Medical Imaging Reviews</em>, vol. 19, no. 8, pp. 832-843, Jul. 2023.</div>
+
+    <div class="reference-item">[20] W. M. Alsharif, "The utilization of artificial intelligence applications to improve breast cancer detection and prognosis," <em>Saudi Medical Journal</em>, vol. 44, no. 2, p. 119, Feb. 2023.</div>
+</div>
+
+</body>
+</html>
